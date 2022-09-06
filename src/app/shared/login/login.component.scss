@@ -5,7 +5,16 @@ mat-card {
 }
 .signin-content {
   padding: 60px 1rem;
+  background-image: linear-gradient(#3748ac, #ffffff);
 }
 .full-width-input {
   width: 100%;
+}
+
+#mat-form-password {
+  margin-bottom: 10px;
+}
+
+img {
+  max-width: 200px;
 }
