@@ -4,8 +4,14 @@ mat-card {
   text-align: center;
 }
 .signin-content {
-  padding: 60px 1rem;
-  background-image: linear-gradient(#3748ac, #ffffff);
+  padding: 77px 1rem;
+  background-image: url(../../../assets/img/background-prism.svg);
+  margin: 0px;
+  position:absolute;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
 }
 .full-width-input {
   width: 100%;
