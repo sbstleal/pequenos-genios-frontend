@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Cep } from 'src/app/models/cep';
 import { IStudent } from 'src/app/models/student';
 import { CepService } from 'src/app/services/cep.service';
+import { EstudanteService } from 'src/app/services/estudante.service';
 
 @Component({
   selector: 'app-form-estudante',
@@ -134,17 +135,7 @@ export class FormEstudanteComponent implements OnInit {
 
   public async postStudent(){
     try{
-      this.http.post(`http://localhost:8080/student`, this.student)
-      .subscribe(
-        resultado => {
-          console.log(resultado)
-        },
-        erro => {
-          if(erro.status == 400) {
-            console.log(erro);
-          }
-        }
-      );
+        await new EstudanteService(this.http).postStudent(this.student);
         console.log('success');
       }
     catch(e:any){
