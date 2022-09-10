@@ -9,19 +9,13 @@ import { CepService } from 'src/app/services/cep.service';
 import { StudentService } from 'src/app/services/student.service';
 
 @Component({
-<<<<<<<< HEAD:src/app/pages/form-studant/form-studant.component.ts
-  selector: 'app-form-studant',
-  templateUrl: './form-studant.component.html',
-  styleUrls: ['./form-studant.component.scss'],
-})
-export class FormStudantComponent implements OnInit {
-========
   selector: 'app-form-student',
   templateUrl: './form-student.component.html',
   styleUrls: ['./form-student.component.scss'],
 })
+
 export class FormStudentComponent implements OnInit {
->>>>>>>> main:src/app/pages/form-student/form-student.component.ts
+
   formGroup: FormGroup;
   titleAlert: string = 'Este campo é obrigatório';
 
