@@ -2,7 +2,7 @@ export interface IStudent {
   name: string
   phoneNumber: string
   fee: number
-  emailAdress: string
+  email: string
   street: string
   city: string
   country: string
