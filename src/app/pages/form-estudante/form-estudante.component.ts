@@ -138,6 +138,7 @@ export class FormEstudanteComponent implements OnInit {
     try{
         await this.estudanteService.postStudent(this.student);
         console.log('success');
+        this.formGroup.reset();
       }
     catch(e:any){
       console.log('error');
