@@ -6,19 +6,19 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Cep } from 'src/app/models/cep';
 import { IStudent } from 'src/app/models/student';
 import { CepService } from 'src/app/services/cep.service';
-import { EstudanteService } from 'src/app/services/estudante.service';
+import { StudentService } from 'src/app/services/student.service';
 
 @Component({
-  selector: 'app-form-estudante',
-  templateUrl: './form-estudante.component.html',
-  styleUrls: ['./form-estudante.component.scss'],
+  selector: 'app-form-student',
+  templateUrl: './form-student.component.html',
+  styleUrls: ['./form-student.component.scss'],
 })
-export class FormEstudanteComponent implements OnInit {
+export class FormStudentComponent implements OnInit {
   formGroup: FormGroup;
   titleAlert: string = 'Este campo é obrigatório';
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient,
-    private estudanteService: EstudanteService, private cepService: CepService,
+    private studentService: StudentService, private cepService: CepService,
     private _snackBar: MatSnackBar) {}
 
   ngOnInit() {
@@ -147,7 +147,7 @@ export class FormEstudanteComponent implements OnInit {
 
   public async postStudent(){
     try{
-        await this.estudanteService.postStudent(this.student);
+        await this.studentService.postStudent(this.student);
         this.formGroup.reset();
         this.openSnackBar(this.success, this.action);
       }

@@ -8,7 +8,7 @@ import { IStudent } from '../models/student';
 @Injectable({
   providedIn: 'root',
 })
-export class EstudanteService {
+export class StudentService {
   constructor(public http: HttpClient) {}
 
   api_url = environment.backend;
