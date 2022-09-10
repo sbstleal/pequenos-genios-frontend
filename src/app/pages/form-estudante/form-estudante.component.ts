@@ -16,7 +16,8 @@ export class FormEstudanteComponent implements OnInit {
   formGroup: FormGroup;
   titleAlert: string = 'Este campo é obrigatório';
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
+  constructor(private formBuilder: FormBuilder, private http: HttpClient,
+    private estudanteService: EstudanteService, private cepService: CepService) {}
 
   ngOnInit() {
     this.createForm();
@@ -125,7 +126,7 @@ export class FormEstudanteComponent implements OnInit {
   }
 
   public async findPostalCode(){
-    this.cep = await new CepService(this.http).getViaCep(this.student.postalCode)
+    this.cep = await this.cepService.getViaCep(this.student.postalCode);
     if(this.cep){
       this.student.street = this.cep.logradouro
       this.student.city = this.cep.localidade
@@ -135,7 +136,7 @@ export class FormEstudanteComponent implements OnInit {
 
   public async postStudent(){
     try{
-        await new EstudanteService(this.http).postStudent(this.student);
+        await this.estudanteService.postStudent(this.student);
         console.log('success');
       }
     catch(e:any){
