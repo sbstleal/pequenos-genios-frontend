@@ -1,12 +1,11 @@
-export interface Student {
-  id: number
+export interface IStudent {
   name: string
   phoneNumber: string
-  fees: string
-  emailAdress: string
+  fee: number
+  email: string
   street: string
   city: string
   country: string
-  cep: string
+  postalCode: string
   state: string
 }
