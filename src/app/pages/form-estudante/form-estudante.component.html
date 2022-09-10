@@ -92,12 +92,6 @@
     </table>
 
     <td>
-      <!-- <mat-form-field class="form-element-group">
-        <input matInput placeholder="País" formControlName="country" [(ngModel)]="student.country">
-        <mat-error *ngIf="!country.valid && country.touched">
-          {{ titleAlert }}
-        </mat-error>
-      </mat-form-field> -->
       <mat-form-field class="form-element-group">
         <mat-label>País</mat-label>
         <mat-select matInput formControlName="country" [(ngModel)]="student.country">
@@ -110,9 +104,6 @@
         </mat-error>
       </mat-form-field>
     </td>
-
-
-
 
     <div>
       <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Salvar

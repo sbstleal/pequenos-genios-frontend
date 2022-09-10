@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs/internal/Observable';
 import { Cep } from 'src/app/models/cep';
 import { IStudent } from 'src/app/models/student';
@@ -17,7 +18,8 @@ export class FormEstudanteComponent implements OnInit {
   titleAlert: string = 'Este campo é obrigatório';
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient,
-    private estudanteService: EstudanteService, private cepService: CepService) {}
+    private estudanteService: EstudanteService, private cepService: CepService,
+    private _snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.createForm();
@@ -25,6 +27,9 @@ export class FormEstudanteComponent implements OnInit {
 
   public student: IStudent = {} as IStudent;
   public cep:Cep|undefined = {} as Cep;
+
+  success = 'Salvo com sucesso!';
+  action = 'fechar';
 
   countrySelected = [
     {
@@ -134,11 +139,17 @@ export class FormEstudanteComponent implements OnInit {
     }
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000
+    });
+  }
+
   public async postStudent(){
     try{
         await this.estudanteService.postStudent(this.student);
-        console.log('success');
         this.formGroup.reset();
+        this.openSnackBar(this.success, this.action);
       }
     catch(e:any){
       console.log('error');
