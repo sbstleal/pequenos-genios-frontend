@@ -1,0 +1,114 @@
+<div class="container" novalidate>
+  <form [formGroup]="formGroup" (ngSubmit)="postStudent()" class="form">
+
+    <table class="form-element" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="form-element">
+            <input matInput placeholder="Nome" formControlName="name" [(ngModel)]="student.name">
+            <mat-error *ngIf="!formGroup.controls['name'].valid && formGroup.controls['name'].touched">
+              {{ getNameEmail() }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <table class="form-element" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="form-element">
+            <input matInput placeholder="E-mail Ex: estudante@estudante.com" formControlName="email" [(ngModel)]="student.email">
+            <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
+              {{ getErrorEmail() }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="form-element">
+            <input matInput mask="(00) 00000-0000" placeholder="Telefone Ex: (00) 00000-0000" formControlName="phone" [(ngModel)]="student.phoneNumber">
+            <mat-error *ngIf="!formGroup.controls['phone'].valid && formGroup.controls['phone'].touched">
+              {{ getFeeEmail() }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <table class="form-element" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="form-element">
+            <input matInput placeholder="CEP" (blur)="findPostalCode()" mask="00000-000" formControlName="postalcode" [(ngModel)]="student.postalCode">
+            <mat-error *ngIf="!postalcode.valid && postalcode.touched">
+              {{ titleAlert }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="form-element">
+            <input matInput currencyMask placeholder="Mensalidade Ex: 120.00" [(ngModel)]="student.fee"
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left'}" formControlName="fee">
+            <mat-error *ngIf="!formGroup.controls['fee'].valid && formGroup.controls['fee'].touched">
+              {{ getFeeEmail() }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <table class="form-element" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="form-element">
+            <input matInput placeholder="Logradouro" formControlName="street" [(ngModel)]="student.street">
+            <mat-error *ngIf="!street.valid && street.touched">
+              {{ titleAlert }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <table class="form-element" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="form-element-group">
+            <input matInput placeholder="Cidade" formControlName="city" [(ngModel)]="student.city">
+            <mat-error *ngIf="!city.valid && city.touched">
+              {{ titleAlert }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="form-element-group">
+            <input matInput placeholder="Estado" formControlName="state" [(ngModel)]="student.state">
+            <mat-error *ngIf="!state.valid && state.touched">
+              {{ titleAlert }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <td>
+      <mat-form-field class="form-element-group">
+        <mat-label>País</mat-label>
+        <mat-select matInput formControlName="country" [(ngModel)]="student.country">
+          <mat-option *ngFor="let country of countrySelected" [value]="country.value">
+            {{country.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="!country.valid && country.touched">
+          {{ titleAlert }}
+        </mat-error>
+      </mat-form-field>
+    </td>
+
+    <div>
+      <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Salvar
+      </button>
+    </div>
+
+  </form>
+</div>

@@ -1,0 +1,38 @@
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+td {
+  padding: 8px;
+}
+
+.container {
+  padding: 20px;
+}
+
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-element {
+  //padding: 5px 0px 25px 2px;
+  width: 100%;
+}
+
+.form-element-group {
+  width: 100%;
+}
+
+.button {
+  position: relative;
+  width: 15%;
+  margin-top: 20px;
+  margin-left: 5px;
+  position: absolute;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
