@@ -9,11 +9,11 @@ import { CepService } from 'src/app/services/cep.service';
 import { EstudanteService } from 'src/app/services/estudante.service';
 
 @Component({
-  selector: 'app-form-estudante',
-  templateUrl: './form-estudante.component.html',
-  styleUrls: ['./form-estudante.component.scss'],
+  selector: 'app-form-studant',
+  templateUrl: './form-studant.component.html',
+  styleUrls: ['./form-studant.component.scss'],
 })
-export class FormEstudanteComponent implements OnInit {
+export class FormStudantComponent implements OnInit {
   formGroup: FormGroup;
   titleAlert: string = 'Este campo é obrigatório';
 
@@ -54,8 +54,7 @@ export class FormEstudanteComponent implements OnInit {
       street: [null, Validators.required],
       state: [null, Validators.required],
       city: [null, Validators.required],
-      country: [null, Validators.required]/*,
-      validate: '',*/
+      country: [null, Validators.required]
     });
   }
 

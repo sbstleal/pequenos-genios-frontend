@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
 import { MaterialNgModule } from './material/material.module';
-import { FormEstudanteComponent } from './pages/form-estudante/form-estudante.component';
+import { FormStudantComponent } from './pages/form-studant/form-studant.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -24,7 +24,7 @@ import { HeaderComponent } from './shared/header/header.component';
     LoginComponent,
     HomeComponent,
     FooterComponent,
-    FormEstudanteComponent,
+    FormStudantComponent,
   ],
   imports: [
     BrowserModule,
