@@ -107,7 +107,7 @@ export class FormStudentComponent implements OnInit {
       : '';
   }
 
-  getNameEmail() {
+  getErrorName() {
     return this.formGroup.get('name')?.hasError('required')
       ? 'Este campo é obrigatório'
       : this.formGroup.get('name')?.hasError('pattern')
@@ -115,7 +115,7 @@ export class FormStudentComponent implements OnInit {
       : '';
   }
 
-  getFeeEmail() {
+  getErrorFee() {
     return this.formGroup.get('fee')?.hasError('required')
       ? 'Este campo é obrigatório'
       : this.formGroup.get('fee')?.hasError('min')

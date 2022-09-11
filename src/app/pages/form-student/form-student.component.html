@@ -7,7 +7,7 @@
           <mat-form-field class="form-element">
             <input matInput placeholder="Nome" formControlName="name" [(ngModel)]="student.name">
             <mat-error *ngIf="!formGroup.controls['name'].valid && formGroup.controls['name'].touched">
-              {{ getNameEmail() }}
+              {{ getErrorName() }}
             </mat-error>
           </mat-form-field>
         </td>
@@ -28,7 +28,7 @@
           <mat-form-field class="form-element">
             <input matInput mask="(00) 00000-0000" placeholder="Telefone Ex: (00) 00000-0000" formControlName="phone" [(ngModel)]="student.phoneNumber">
             <mat-error *ngIf="!formGroup.controls['phone'].valid && formGroup.controls['phone'].touched">
-              {{ getFeeEmail() }}
+              {{ getErrorPhone() }}
             </mat-error>
           </mat-form-field>
         </td>
@@ -50,7 +50,7 @@
             <input matInput currencyMask placeholder="Mensalidade Ex: 120.00" [(ngModel)]="student.fee"
               [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left'}" formControlName="fee">
             <mat-error *ngIf="!formGroup.controls['fee'].valid && formGroup.controls['fee'].touched">
-              {{ getFeeEmail() }}
+              {{ getErrorFee() }}
             </mat-error>
           </mat-form-field>
         </td>
