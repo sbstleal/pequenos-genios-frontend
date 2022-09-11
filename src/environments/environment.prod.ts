@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  backend: 'https://pequenosgenios-backend.herokuapp.com',
+  cepHost: "https://viacep.com.br"
 };
