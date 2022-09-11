@@ -13,7 +13,9 @@ import { StudentService } from 'src/app/services/student.service';
   templateUrl: './form-student.component.html',
   styleUrls: ['./form-student.component.scss'],
 })
+
 export class FormStudentComponent implements OnInit {
+
   formGroup: FormGroup;
   titleAlert: string = 'Este campo é obrigatório';
 
@@ -54,8 +56,7 @@ export class FormStudentComponent implements OnInit {
       street: [null, Validators.required],
       state: [null, Validators.required],
       city: [null, Validators.required],
-      country: [null, Validators.required]/*,
-      validate: '',*/
+      country: [null, Validators.required]
     });
   }
 
@@ -106,7 +107,7 @@ export class FormStudentComponent implements OnInit {
       : '';
   }
 
-  getNameEmail() {
+  getErrorName() {
     return this.formGroup.get('name')?.hasError('required')
       ? 'Este campo é obrigatório'
       : this.formGroup.get('name')?.hasError('pattern')
@@ -114,7 +115,7 @@ export class FormStudentComponent implements OnInit {
       : '';
   }
 
-  getFeeEmail() {
+  getErrorFee() {
     return this.formGroup.get('fee')?.hasError('required')
       ? 'Este campo é obrigatório'
       : this.formGroup.get('fee')?.hasError('min')
