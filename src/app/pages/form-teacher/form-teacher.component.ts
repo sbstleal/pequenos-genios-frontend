@@ -132,6 +132,13 @@ export class FormTeacherComponent implements OnInit {
       : '';
   }
 
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
+
   public async findPostalCode(){
     this.cep = await this.cepService.getViaCep(this.teacher.postalCode);
     if(this.cep){
@@ -139,12 +146,6 @@ export class FormTeacherComponent implements OnInit {
       this.teacher.city = this.cep.localidade
       this.teacher.state = this.cep.uf
     }
-  }
-
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 3000
-    });
   }
 
   public async postTeacher(){

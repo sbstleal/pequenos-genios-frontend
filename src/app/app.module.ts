@@ -17,6 +17,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FormTeacherComponent } from './pages/form-teacher/form-teacher.component';
+import { TableStudentComponent } from './pages/table-student/table-student.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FormTeacherComponent } from './pages/form-teacher/form-teacher.componen
     FooterComponent,
     FormStudentComponent,
     FormTeacherComponent,
+    TableStudentComponent,
   ],
   imports: [
     BrowserModule,
