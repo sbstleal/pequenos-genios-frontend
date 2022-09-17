@@ -1,1 +1,36 @@
-<p>table-teacher works!</p>
+<!-- Teacher Table Modal 1-->
+
+<div class="container">
+    <!-- Teacher Table Modal - Title-->
+    <h2 style="margin-top: 1rem">Lista de Professores
+    </h2>
+    <!-- Teacher Table - Empty Warning -->
+    <img class="img-fluid rounded mb-5" *ngIf="!teachers || teachers.length == 0" src="assets/img/wip.png" alt="..." />
+    <!-- Table -->
+    <div>
+        <table class="table table-hover" *ngIf="teachers && teachers.length > 0">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">País</th>
+                    <th scope="col">Cidade</th>
+                    <th scope="col">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let element of teachers">
+                    <td></td>
+                    <td>{{element.name}}</td>
+                    <td>{{element.phoneNumber}}</td>
+                    <td>{{element.email}}</td>
+                    <td>{{element.country}}</td>
+                    <td>{{element.city}}</td>
+                    <td>{{element.state}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
