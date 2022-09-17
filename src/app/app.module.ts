@@ -23,7 +23,9 @@ import {HomeLayoutComponent} from "./pages/home-layout/home-layout.component";
 import {LoaderComponent} from "./shared/loader/loader.component";
 import {AuthInterceptor} from "./interceptor/auth.interceptor";
 import {LoaderInterceptor} from "./interceptor/loader.interceptor";
+import { TableTeacherComponent } from './pages/table-teacher/table-teacher.component';
 import { CarouselComponent } from './pages/home/carousel/carousel.component';
+
 
 @NgModule({
     declarations: [
@@ -38,6 +40,7 @@ import { CarouselComponent } from './pages/home/carousel/carousel.component';
         LoginLayoutComponent,
         HomeLayoutComponent,
         LoaderComponent,
+        TableTeacherComponent,
         CarouselComponent
     ],
     imports: [
