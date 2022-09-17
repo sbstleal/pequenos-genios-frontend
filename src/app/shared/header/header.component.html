@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" *ngIf="isLoggedIn$ | async as isLoggedIn">
+<mat-toolbar color="primary">
   <button mat-icon-button>
     <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
   </button>
@@ -7,22 +7,21 @@
 
   <span class="fill-remaining-space"></span>
   <div>
-    <button mat-button (click)="onLogout()" *ngIf="isLoggedIn">Logout</button>
+    <button mat-button (click)="onLogout()">Sair</button>
   </div>
+
 </mat-toolbar>
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
-    <mat-nav-list>
-
-      <a mat-list-item [routerLink]="'/home'"> Home </a>
-      <a mat-list-item [routerLink]="'/cadastrostudent'" (click)="sidenav.toggle()"> Cadastrar Alunos </a>
-      <a mat-list-item [routerLink]="'/cadastroteacher'" (click)="sidenav.toggle()"> Cadastrar Professores </a>
-      <a mat-list-item [routerLink]="'/students'" (click)="sidenav.toggle()"> Alunos Cadastrados </a>
-      <a mat-list-item [routerLink]="'/activities'"> Professores Cadastrados </a>
-      <a mat-list-item [routerLink]="'/create-activity'"> Contate-nos </a>
-      <a mat-list-item (click)="sidenav.toggle()"  mat-list-item>Fechar</a>
-
+    <mat-nav-list (click)="sidenav.toggle()">
+      <a mat-list-item [routerLink]="'/main/home'"> Home </a>
+      <a mat-list-item [routerLink]="'/main/cadastrostudent'"> Cadastrar Alunos </a>
+      <a mat-list-item [routerLink]="'/main/cadastroteacher'"> Cadastrar Professores </a>
+      <a mat-list-item [routerLink]="'/main/students'"> Alunos Cadastrados </a>
+      <a mat-list-item [routerLink]="'/main/activities'"> Professores Cadastrados </a>
+      <a mat-list-item [routerLink]="'/main/create-activity'"> Contate-nos </a>
+      <a mat-list-item>Fechar</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

@@ -1,21 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
-
-import { AuthService } from '../../auth/auth.service';
+import { Component } from '@angular/core';
+import {AuthenticationService} from "../../services/authentication.service";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  isLoggedIn$: Observable<boolean> | undefined;
+  isLoggedIn$: boolean;
 
-  constructor(private authService: AuthService) { }
-
-  ngOnInit() {
-    this.isLoggedIn$ = this.authService.isLoggedIn;
+  constructor(private authService: AuthenticationService) {
+    this.isLoggedIn$ = this.authService.isTokenPresent();
   }
 
   onLogout() {
