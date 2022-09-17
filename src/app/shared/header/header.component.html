@@ -2,8 +2,8 @@
   <button mat-icon-button>
     <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
   </button>
-  <img src="../../../assets/img/logo-pg-white.svg" alt="Logo Pequenos Gênios">
-  <span>Pequenos Gênios</span>
+  <img src="../../../assets/img/logo-pg-white.svg" alt="Logo Pequenos Gênios" [routerLink]="'/main'">
+  <span [routerLink]="'/main'">Pequenos Gênios</span>
 
   <span class="fill-remaining-space"></span>
   <div>
@@ -15,7 +15,7 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
     <mat-nav-list (click)="sidenav.toggle()">
-      <a mat-list-item [routerLink]="'/main/home'"> Home </a>
+      <a mat-list-item [routerLink]="'/main'"> Home </a>
       <a mat-list-item [routerLink]="'/main/cadastrostudent'"> Cadastrar Alunos </a>
       <a mat-list-item [routerLink]="'/main/cadastroteacher'"> Cadastrar Professores </a>
       <a mat-list-item [routerLink]="'/main/students'"> Alunos Cadastrados </a>
