@@ -1,12 +1,12 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
-import { Cep } from 'src/app/models/cep';
-import { ITeacher } from 'src/app/models/teacher';
-import { CepService } from 'src/app/services/cep.service';
-import { TeacherService } from 'src/app/services/teacher.service';
+import {HttpClient} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {Observable} from 'rxjs';
+import {Cep} from 'src/app/models/cep';
+import {ITeacher} from 'src/app/models/teacher';
+import {CepService} from 'src/app/services/cep.service';
+import {TeacherService} from 'src/app/services/teacher.service';
 
 @Component({
   selector: 'app-form-teacher',

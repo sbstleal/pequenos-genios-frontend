@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import {Component} from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
 
-import { IStudent } from '../../models/student';
+import {IStudent} from '../../models/student';
 
 @Component({
   selector: 'app-table-student',

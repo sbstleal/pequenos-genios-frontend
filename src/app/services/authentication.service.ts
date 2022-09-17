@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
-import { LoginResponse } from 'src/app/models/login.response.model';
+import {LoginResponse} from 'src/app/models/login.response.model';
 import {Router} from "@angular/router";
 
 const ACCESS_TOKEN: string = 'access_token';

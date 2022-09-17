@@ -1,12 +1,12 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs/internal/Observable';
-import { Cep } from 'src/app/models/cep';
-import { IStudent } from 'src/app/models/student';
-import { CepService } from 'src/app/services/cep.service';
-import { StudentService } from 'src/app/services/student.service';
+import {HttpClient} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {Observable} from 'rxjs/internal/Observable';
+import {Cep} from 'src/app/models/cep';
+import {IStudent} from 'src/app/models/student';
+import {CepService} from 'src/app/services/cep.service';
+import {StudentService} from 'src/app/services/student.service';
 
 @Component({
   selector: 'app-form-student',
@@ -148,7 +148,7 @@ export class FormStudentComponent implements OnInit {
 
   public async postStudent(){
     try{
-        await this.studentService.postStudent(this.student);
+        await this.studentService.postStudent(this.formGroup.getRawValue());
         this.formGroup.reset();
         this.openSnackBar(this.success, this.action);
       }
