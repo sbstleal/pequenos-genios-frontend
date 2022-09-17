@@ -10,6 +10,7 @@ import {LoginComponent} from './pages/login/login.component';
 import {TableStudentComponent} from './pages/table-student/table-student.component';
 import {LoginLayoutComponent} from "./pages/login-layout/login-layout.component";
 import {HomeLayoutComponent} from "./pages/home-layout/home-layout.component";
+import { TableTeacherComponent } from './pages/table-teacher/table-teacher.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,11 @@ const routes: Routes = [
       {
         path: 'students',
         component: TableStudentComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'teachers',
+        component: TableTeacherComponent,
         canActivate: [AuthGuard]
       },
       {path: '**', redirectTo: ''}

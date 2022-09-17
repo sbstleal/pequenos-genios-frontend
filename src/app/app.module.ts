@@ -23,6 +23,7 @@ import {HomeLayoutComponent} from "./pages/home-layout/home-layout.component";
 import {LoaderComponent} from "./shared/loader/loader.component";
 import {AuthInterceptor} from "./interceptor/auth.interceptor";
 import {LoaderInterceptor} from "./interceptor/loader.interceptor";
+import { TableTeacherComponent } from './pages/table-teacher/table-teacher.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,8 @@ import {LoaderInterceptor} from "./interceptor/loader.interceptor";
         TableStudentComponent,
         LoginLayoutComponent,
         HomeLayoutComponent,
-        LoaderComponent
+        LoaderComponent,
+        TableTeacherComponent
     ],
     imports: [
         BrowserModule,
