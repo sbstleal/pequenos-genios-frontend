@@ -3,7 +3,6 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {AuthGuard} from './interceptor/auth.guard';
 
-// import { AuthGuard } from './auth/auth.guard';
 import {FormStudentComponent} from './pages/form-student/form-student.component';
 import {FormTeacherComponent} from './pages/form-teacher/form-teacher.component';
 import {HomeComponent} from './pages/home/home.component';
@@ -25,7 +24,7 @@ const routes: Routes = [
     path: 'main', component: HomeLayoutComponent, canActivate: [AuthGuard], canLoad: [AuthGuard],
     children: [
       {
-        path: 'home',
+        path: '',
         component: HomeComponent,
         canActivate: [AuthGuard],
         canLoad: [AuthGuard]
@@ -48,36 +47,6 @@ const routes: Routes = [
       {path: '**', redirectTo: ''}
     ]
   },
-  // {
-  //   path: '', component: HeaderComponent,
-  //   canActivate: [AuthGuard],
-  //   redirectTo: 'home',
-  //   children: [
-  //     {
-  //       path: 'home',
-  //       component: HomeComponent,
-  //       canActivate: [AuthGuard],
-  //       canLoad: [AuthGuard]
-  //     }, {
-  //       path: 'cadastrostudent',
-  //       component: FormStudentComponent,
-  //       canActivate: [AuthGuard],
-  //       canLoad: [AuthGuard]
-  //     },
-  //     {
-  //       path: 'cadastroteacher',
-  //       component: FormTeacherComponent,
-  //       canActivate: [AuthGuard]
-  //     },
-  //     {
-  //       path: 'students',
-  //       component: TableStudentComponent,
-  //       canActivate: [AuthGuard]
-  //     },
-  //     {path: '**', redirectTo: ''}
-  //   ]
-  // },
-
 ];
 
 @NgModule({

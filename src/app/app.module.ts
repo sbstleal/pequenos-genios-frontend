@@ -9,8 +9,6 @@ import {NgxMaskModule} from 'ngx-mask';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
-
-import {AuthService} from './auth/auth.service';
 import {MaterialNgModule} from './material/material.module';
 import {FormStudentComponent} from './pages/form-student/form-student.component';
 import {HomeComponent} from './pages/home/home.component';
@@ -52,7 +50,6 @@ import {LoaderInterceptor} from "./interceptor/loader.interceptor";
         HttpClientModule
     ],
     providers: [
-      AuthService,
       AuthGuard,
       {
         provide: HTTP_INTERCEPTORS,
