@@ -7,6 +7,7 @@ import { FormsModule } from "@angular/forms";
 
 
 import { CarouselComponent } from "./carousel/carousel.component";
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 
@@ -18,7 +19,8 @@ import { CarouselComponent } from "./carousel/carousel.component";
 
   declarations: [
     HomeComponent,
-    CarouselComponent],
+    CarouselComponent,
+    ContactComponent],
 
   bootstrap: [HomeComponent]
 })

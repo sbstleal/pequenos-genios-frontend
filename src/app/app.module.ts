@@ -1,5 +1,5 @@
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -25,6 +25,7 @@ import {AuthInterceptor} from "./interceptor/auth.interceptor";
 import {LoaderInterceptor} from "./interceptor/loader.interceptor";
 import { TableTeacherComponent } from './pages/table-teacher/table-teacher.component';
 import { CarouselComponent } from './pages/home/carousel/carousel.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { CarouselComponent } from './pages/home/carousel/carousel.component';
         HomeLayoutComponent,
         LoaderComponent,
         TableTeacherComponent,
-        CarouselComponent
+        CarouselComponent,
+        ContactComponent
     ],
     imports: [
         BrowserModule,
@@ -70,6 +72,9 @@ import { CarouselComponent } from './pages/home/carousel/carousel.component';
     bootstrap: [AppComponent],
     exports: [
         HeaderComponent
+    ],
+    schemas: [
+      CUSTOM_ELEMENTS_SCHEMA
     ]
 })
 export class AppModule {}

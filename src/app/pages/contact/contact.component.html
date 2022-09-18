@@ -1,0 +1,37 @@
+<section class="border p-4 d-flex justify-content-center mb-4">
+  <form (ngSubmit)="validateForm()" [formGroup]="validationForm" id="form" class="text-center" style="width: 100%; max-width: 300px">
+    <h2>Contact us</h2>
+
+    <!-- Name input -->
+    <mdb-form-control class="mb-4">
+      <input mdbInput formControlName="name" type="text" id="name" class="form-control" />
+      <label mdbLabel class="form-label" for="name">Name</label>
+    </mdb-form-control>
+    <!-- Email input -->
+    <mdb-form-control class="mb-4">
+      <input mdbInput formControlName="email" type="email" id="email" class="form-control" />
+      <label mdbLabel class="form-label" for="email">Email address</label>
+    </mdb-form-control>
+    <!-- Subject input -->
+    <mdb-form-control class="mb-4">
+      <input mdbInput formControlName="subject" type="text" id="subject" class="form-control" />
+      <label mdbLabel class="form-label" for="subject">Subject</label>
+    </mdb-form-control>
+    <!-- Message input -->
+    <mdb-form-control class="mb-4">
+      <textarea mdbInput formControlName="message" class="form-control" id="message" rows="4"></textarea>
+      <label mdbLabel class="form-label" for="message">Message</label>
+    </mdb-form-control>
+    <!-- Mail copy -->
+    <div class="form-check">
+      <input mdbCheckbox class="form-check-input" type="checkbox" value="" id="copy"/>
+      <label class="form-check-label" for="copy">
+        Send me copy
+      </label>
+    </div>
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary my-4">Send</button>
+    <!-- Status message -->
+    <div #status></div>
+  </form>
+</section>

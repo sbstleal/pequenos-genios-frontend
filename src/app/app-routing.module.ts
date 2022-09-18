@@ -11,6 +11,7 @@ import {TableStudentComponent} from './pages/table-student/table-student.compone
 import {LoginLayoutComponent} from "./pages/login-layout/login-layout.component";
 import {HomeLayoutComponent} from "./pages/home-layout/home-layout.component";
 import { TableTeacherComponent } from './pages/table-teacher/table-teacher.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 const routes: Routes = [
@@ -48,6 +49,11 @@ const routes: Routes = [
       {
         path: 'teachers',
         component: TableTeacherComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
         canActivate: [AuthGuard]
       },
       {path: '**', redirectTo: ''}
