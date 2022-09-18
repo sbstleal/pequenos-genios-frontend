@@ -8,4 +8,5 @@ export interface ITeacher {
   city: string
   street: string
   state: string
+  number: number
 }

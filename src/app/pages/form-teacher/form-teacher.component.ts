@@ -1,12 +1,12 @@
-import {HttpClient} from '@angular/common/http';
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {Observable} from 'rxjs';
-import {Cep} from 'src/app/models/cep';
-import {ITeacher} from 'src/app/models/teacher';
-import {CepService} from 'src/app/services/cep.service';
-import {TeacherService} from 'src/app/services/teacher.service';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
+import { Cep } from 'src/app/models/cep';
+import { ITeacher } from 'src/app/models/teacher';
+import { CepService } from 'src/app/services/cep.service';
+import { TeacherService } from 'src/app/services/teacher.service';
 
 @Component({
   selector: 'app-form-teacher',
@@ -46,6 +46,7 @@ export class FormTeacherComponent implements OnInit {
       /^\s*(\d{2}|\d{0})[-. ]?(\d{5}|\d{4})[-. ]?(\d{4})[-. ]?\s*$/;
     let nameregex: RegExp = /^([a-zA-Zà-úÀ-Ú]|-|_|\s)+$/;
     let postalcode: RegExp = /^(\d{0,5}|\d{5}\d{0,3})$/;
+    let numberRegex: RegExp = /^\d+$/;
     this.formGroup = this.formBuilder.group({
       name: [null, [Validators.required, Validators.pattern(nameregex)]],
       phone: [null, [Validators.required, Validators.pattern(phoneregex)]],
@@ -55,8 +56,8 @@ export class FormTeacherComponent implements OnInit {
       street: [null, Validators.required],
       state: [null, Validators.required],
       city: [null, Validators.required],
-      country: [null, Validators.required]/*,
-      validate: '',*/
+      country: [null, Validators.required],
+      number: [null, [Validators.required, Validators.pattern(numberRegex)]]
     });
   }
 
@@ -132,6 +133,14 @@ export class FormTeacherComponent implements OnInit {
       : '';
   }
 
+  getErrorNumber() {
+    return this.formGroup.get('number')?.hasError('required')
+      ? 'Este campo é obrigatório'
+      : this.formGroup.get('number')?.hasError('pattern')
+      ? 'Não é um número de endereço válido'
+      : '';
+  }
+
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
@@ -157,6 +166,7 @@ export class FormTeacherComponent implements OnInit {
     catch(e:any){
       console.log('error');
       console.log(this.teacher);
+      this.openSnackBar('Error', this.action);
     }
   }
 

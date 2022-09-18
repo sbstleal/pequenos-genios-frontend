@@ -8,4 +8,5 @@ export interface IStudent {
   country: string
   postalCode: string
   state: string
+  number: number
 }

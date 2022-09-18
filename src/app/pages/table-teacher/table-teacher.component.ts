@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
-
 import { ITeacher } from 'src/app/models/teacher';
 
 @Component({
@@ -14,7 +12,7 @@ export class TableTeacherComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   teachers: ITeacher[] = [
     {
       name: "Danilo Aparecido",
@@ -25,7 +23,8 @@ export class TableTeacherComponent implements OnInit {
       city: "São Bernardo do Campo",
       street: "Rua Augusta a 120 km/h",
       postalCode: "00000-00",
-      state: "SP"
+      state: "SP",
+      number: 3
     },
     {
       name: "Claudio Rapôso",
@@ -36,7 +35,8 @@ export class TableTeacherComponent implements OnInit {
       city: "Recife",
       street: "Rua Urbana",
       postalCode: "00000-00",
-      state: "PE"
+      state: "PE",
+      number: 3
     },
     {
       name: "Victor Farias",
@@ -47,7 +47,8 @@ export class TableTeacherComponent implements OnInit {
       city: "São Paulo",
       street: "Rua Placeholder",
       postalCode: "00000-00",
-      state: "SP"
+      state: "SP",
+      number: 3
     },
     {
       name: "Isidro Massetto",
@@ -58,7 +59,8 @@ export class TableTeacherComponent implements OnInit {
       city: "São Paulo",
       street: "150th Avenue NE",
       postalCode: "00000-00",
-      state: "SP"
+      state: "SP",
+      number: 3
     },
     {
       name: "Lylian Toledo",
@@ -69,7 +71,8 @@ export class TableTeacherComponent implements OnInit {
       city: "São Paulo",
       street: "Rua Genérica",
       postalCode: "00000-00",
-      state: "SP"
+      state: "SP",
+      number: 3
     },
     {
       name: "Guilherme Junqueira",
@@ -80,7 +83,8 @@ export class TableTeacherComponent implements OnInit {
       city: "São Paulo",
       street: "Rua Leadership",
       postalCode: "00000-00",
-      state: "SP"
+      state: "SP",
+      number: 3
     },
     {
       name: "Hiara Peixoto",
@@ -91,8 +95,9 @@ export class TableTeacherComponent implements OnInit {
       city: "São Paulo",
       street: "Rua Gestão de Pessoas",
       postalCode: "00000-00",
-      state: "SP"
+      state: "SP",
+      number: 3
     }
   ];
-  
+
 }
