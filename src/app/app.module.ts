@@ -26,6 +26,7 @@ import {LoaderInterceptor} from "./interceptor/loader.interceptor";
 import { TableTeacherComponent } from './pages/table-teacher/table-teacher.component';
 import { CarouselComponent } from './pages/home/carousel/carousel.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { ContactComponent } from './pages/contact/contact.component';
         FormsModule,
         NgxMaskModule.forRoot(),
         CurrencyMaskModule,
+        FontAwesomeModule,
         HttpClientModule
     ],
     providers: [
