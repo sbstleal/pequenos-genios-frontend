@@ -5,22 +5,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { FormsModule } from "@angular/forms";
 
-
-import { CarouselComponent } from "./carousel/carousel.component";
-import { ContactComponent } from './pages/contact/contact.component';
-
-
-
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule],
-
-  declarations: [
-    HomeComponent,
-    CarouselComponent,
-    ContactComponent],
 
   bootstrap: [HomeComponent]
 })

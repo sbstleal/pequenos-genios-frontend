@@ -32,6 +32,11 @@
       <mat-cell *matCellDef="let element"> {{element.street}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="Número">
+      <mat-header-cell *matHeaderCellDef> Número </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.number}} </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="Cidade">
       <mat-header-cell *matHeaderCellDef> Cidade </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>

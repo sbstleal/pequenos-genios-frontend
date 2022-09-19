@@ -20,7 +20,8 @@
       <tr>
         <td>
           <mat-form-field class="form-element">
-            <input matInput placeholder="E-mail Ex: estudante@pequenosgenios.com" formControlName="email" [(ngModel)]="student.email">
+            <input matInput placeholder="E-mail Ex: estudante@pequenosgenios.com" formControlName="email"
+              [(ngModel)]="student.email">
             <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
               {{ getErrorEmail() }}
             </mat-error>
@@ -28,7 +29,8 @@
         </td>
         <td>
           <mat-form-field class="form-element">
-            <input matInput mask="(00) 00000-0000" placeholder="Telefone Ex: (00) 00000-0000" formControlName="phone" [(ngModel)]="student.phoneNumber">
+            <input matInput mask="(00) 00000-0000" placeholder="Telefone Ex: (00) 00000-0000" formControlName="phone"
+              [(ngModel)]="student.phoneNumber">
             <mat-error *ngIf="!formGroup.controls['phone'].valid && formGroup.controls['phone'].touched">
               {{ getErrorPhone() }}
             </mat-error>
@@ -41,7 +43,8 @@
       <tr>
         <td>
           <mat-form-field class="form-element">
-            <input matInput placeholder="CEP" (blur)="findPostalCode()" mask="00000-000" formControlName="postalcode" [(ngModel)]="student.postalCode">
+            <input matInput placeholder="CEP" (blur)="findPostalCode()" mask="00000-000" formControlName="postalcode"
+              [(ngModel)]="student.postalCode">
             <mat-error *ngIf="!postalcode.valid && postalcode.touched">
               {{ titleAlert }}
             </mat-error>
@@ -93,19 +96,32 @@
       </tr>
     </table>
 
-    <td>
-      <mat-form-field class="form-element-group">
-        <mat-label>País</mat-label>
-        <mat-select matInput formControlName="country" [(ngModel)]="student.country">
-          <mat-option *ngFor="let country of countrySelected" [value]="country.value">
-            {{country.viewValue}}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="!country.valid && country.touched">
-          {{ titleAlert }}
-        </mat-error>
-      </mat-form-field>
-    </td>
+    <table class="form-element" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="form-element-group">
+            <mat-label>País</mat-label>
+            <mat-select matInput formControlName="country" [(ngModel)]="student.country">
+              <mat-option *ngFor="let country of countrySelected" [value]="country.value">
+                {{country.viewValue}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="!country.valid && country.touched">
+              {{ titleAlert }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+
+        <td>
+          <mat-form-field class="form-element-group">
+            <input matInput placeholder="Número" formControlName="number" [(ngModel)]="student.number">
+            <mat-error *ngIf="!formGroup.controls['number'].valid && formGroup.controls['number'].touched">
+              {{ getErrorNumber() }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
 
     <div>
       <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Salvar
