@@ -1,14 +1,5 @@
-export interface IStudent {
-  name: string
-  phoneNumber: string
+import { IPerson } from "./person"
+
+export interface IStudent extends IPerson {
   fee: number
-  email: string
-  address: {
-  street: string
-  city: string
-  country: string
-  postalCode: string
-  state: string
-  number: number
-  }
 }
