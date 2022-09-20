@@ -46,22 +46,19 @@ export class FormStudentComponent implements OnInit {
     let phoneregex: RegExp =
       /^\s*(\d{2}|\d{0})[-. ]?(\d{5}|\d{4})[-. ]?(\d{4})[-. ]?\s*$/;
     let nameregex: RegExp = /^([a-zA-Zà-úÀ-Ú]|-|_|\s)+$/;
-    let postalCode: RegExp = /^(\d{0,5}|\d{5}\d{0,3})$/;
+    let postalcode: RegExp = /^(\d{0,5}|\d{5}\d{0,3})$/;
     let numberRegex: RegExp = /^\d+$/;
     this.formGroup = this.formBuilder.group({
       name: [null, [Validators.required, Validators.pattern(nameregex)]],
       phone: [null, [Validators.required, Validators.pattern(phoneregex)]],
       email: [null, [Validators.required, Validators.pattern(emailregex)], this.checkInUseEmail],
       fee: [null, [Validators.required, Validators.min(10.0)]],
-
-      address: this.formBuilder.group({
-      postalCode: [null, [Validators.required, Validators.pattern(postalCode)]],
+      postalcode: [null, [Validators.required, Validators.pattern(postalcode)]],
       street: [null, Validators.required],
       state: [null, Validators.required],
       city: [null, Validators.required],
       country: [null, Validators.required],
       number: [null, [Validators.required, Validators.pattern(numberRegex)]]
-      }),
     });
   }
 
@@ -69,8 +66,8 @@ export class FormStudentComponent implements OnInit {
     return this.formGroup.get('phone') as FormControl;
   }
 
-  get postalCode() {
-    return this.formGroup.get('postalCode') as FormControl;
+  get postalcode() {
+    return this.formGroup.get('postalcode') as FormControl;
   }
 
   get street() {
@@ -145,11 +142,11 @@ export class FormStudentComponent implements OnInit {
   }
 
   public async findPostalCode(){
-    this.cep = await this.cepService.getViaCep(this.student.address.postalCode);
+    this.cep = await this.cepService.getViaCep(this.student.postalCode);
     if(this.cep){
-      this.student.address.street = this.cep.logradouro
-      this.student.address.city = this.cep.localidade
-      this.student.address.state = this.cep.uf
+      this.student.street = this.cep.logradouro
+      this.student.city = this.cep.localidade
+      this.student.state = this.cep.uf
     }
   }
 
