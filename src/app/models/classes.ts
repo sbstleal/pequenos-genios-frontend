@@ -1,9 +1,6 @@
-import { IStudent } from "./student"
-import { ITeacher } from "./teacher"
-
 export interface classes {
   id: number
   grade: string
-  teacher: ITeacher
-  students: Array<IStudent>
+  teacher_id: number
+  student_id: number
 }
