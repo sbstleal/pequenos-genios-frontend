@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { IStudent } from '../../models/student';
+import { IObjetctStudent, IStudent } from '../../models/student';
 import { StudentService } from '../../services/student.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { StudentService } from '../../services/student.service';
   styleUrls: ['./table-student.component.scss'],
 })
 export class TableStudentComponent implements OnInit {
-  student: IStudent[] = [];
+  student: IStudent[] ;
 
   displayedColumns = [
     'Nome',
@@ -19,6 +19,7 @@ export class TableStudentComponent implements OnInit {
     'E-mail',
     'Rua',
     'Número',
+    'Bairro',
     'Cidade',
     'Estado',
     'CEP',
@@ -33,9 +34,10 @@ export class TableStudentComponent implements OnInit {
   }
 
   getStudentsInformation() {
-    this.stundentService.getAllStudents().subscribe((res) => {
+    this.stundentService.getAllStudents().subscribe((res: IObjetctStudent) => {
       console.log(res);
-      this.dataSource.data = res;
+      this.dataSource.data = res.content;
     });
   }
+
 }

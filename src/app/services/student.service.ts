@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { lastValueFrom, Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
-import { IStudent } from '../models/student';
+import { IObjetctStudent, IStudent } from '../models/student';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +21,8 @@ export class StudentService {
   }
 
 
-  public getAllStudents(): Observable<IStudent[]>{
-    return this.http.get<IStudent[]>(`${this.api_url}/student`);
+  public getAllStudents(): Observable<IObjetctStudent>{
+    return this.http.get<IObjetctStudent>(`${this.api_url}/student`);
   }
+
 }

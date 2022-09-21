@@ -1,8 +1,8 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {environment} from 'src/environments/environment';
-import {lastValueFrom} from 'rxjs';
-import {ITeacher} from '../models/teacher';
+import {lastValueFrom, Observable} from 'rxjs';
+import {IObjetctTeacher, ITeacher} from '../models/teacher';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +20,8 @@ export class TeacherService {
   }
 
 
-  public async getAllTeachers() {
-    await lastValueFrom(this.http.get<ITeacher>(`${this.api_url}/teacher`));
+  public getAllTeachers(): Observable<IObjetctTeacher> {
+    return this.http.get<IObjetctTeacher>(`${this.api_url}/teacher`);
   }
-
 
 }
