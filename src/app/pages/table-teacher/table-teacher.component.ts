@@ -1,118 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { TeacherService } from 'src/app/services/teacher.service';
 
-import { ITeacher } from '../../models/teacher';
+import { IObjetctTeacher, ITeacher } from '../../models/teacher';
 
 @Component({
   selector: 'app-table-teacher',
   templateUrl: './table-teacher.component.html',
   styleUrls: ['./table-teacher.component.scss']
 })
-export class TableTeacherComponent {
+export class TableTeacherComponent implements OnInit{
+  teacher: ITeacher[] ;
 
   displayedColumns = [
     'Nome',
     'Telefone',
     'E-mail',
-    'País',
-    'Cidade',
+    'Salário',
+    'Rua',
+    'Número',
     'Bairro',
-    'Estado'
+    'Cidade',
+    'Estado',
+    'CEP',
+    'País',
   ];
-  dataSource = new MatTableDataSource<ITeacher>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<ITeacher>();
+
+  constructor(private teacherService: TeacherService) {}
+
+  ngOnInit() {
+    this.getStudentsInformation();
+  }
+
+  getStudentsInformation() {
+    this.teacherService.getAllTeachers().subscribe((res: IObjetctTeacher) => {
+      console.log(res);
+      this.dataSource.data = res.content;
+    });
+  }
 
 }
 
-const ELEMENT_DATA: ITeacher[] = [
-  {
-    name: "Hiara Peixoto",
-    phone: "81998969698",
-    email: "hiara.peixoto@dominio.com.br",
-    salary: "R$ 10.000.000,00",
-    country: "Brasil",
-    city: "São Paulo",
-    street: "Rua Gestão de Pessoas",
-    district: "Centro",
-    cep: "00000-00",
-    state: "SP",
-    number: 3
-  },
-  {
-    name: "Hiara Peixoto",
-    phone: "81998969698",
-    email: "hiara.peixoto@dominio.com.br",
-    salary: "R$ 10.000.000,00",
-    country: "Brasil",
-    city: "São Paulo",
-    street: "Rua Gestão de Pessoas",
-    district: "Centro",
-    cep: "00000-00",
-    state: "SP",
-    number: 3
-  },
-  {
-    name: "Hiara Peixoto",
-    phone: "81998969698",
-    email: "hiara.peixoto@dominio.com.br",
-    salary: "R$ 10.000.000,00",
-    country: "Brasil",
-    city: "São Paulo",
-    street: "Rua Gestão de Pessoas",
-    district: "Centro",
-    cep: "00000-00",
-    state: "SP",
-    number: 3
-  },
-  {
-    name: "Hiara Peixoto",
-    phone: "81998969698",
-    email: "hiara.peixoto@dominio.com.br",
-    salary: "R$ 10.000.000,00",
-    country: "Brasil",
-    city: "São Paulo",
-    street: "Rua Gestão de Pessoas",
-    district: "Centro",
-    cep: "00000-00",
-    state: "SP",
-    number: 3
-  },
-  {
-    name: "Hiara Peixoto",
-    phone: "81998969698",
-    email: "hiara.peixoto@dominio.com.br",
-    salary: "R$ 10.000.000,00",
-    country: "Brasil",
-    city: "São Paulo",
-    street: "Rua Gestão de Pessoas",
-    district: "Centro",
-    cep: "00000-00",
-    state: "SP",
-    number: 3
-  },
-  {
-    name: "Hiara Peixoto",
-    phone: "81998969698",
-    email: "hiara.peixoto@dominio.com.br",
-    salary: "R$ 10.000.000,00",
-    country: "Brasil",
-    city: "São Paulo",
-    street: "Rua Gestão de Pessoas",
-    district: "Centro",
-    cep: "00000-00",
-    state: "SP",
-    number: 3
-  },
-  {
-    name: "Hiara Peixoto",
-    phone: "81998969698",
-    email: "hiara.peixoto@dominio.com.br",
-    salary: "R$ 10.000.000,00",
-    country: "Brasil",
-    city: "São Paulo",
-    street: "Rua Gestão de Pessoas",
-    district: "Centro",
-    cep: "00000-00",
-    state: "SP",
-    number: 3
-  }
-];

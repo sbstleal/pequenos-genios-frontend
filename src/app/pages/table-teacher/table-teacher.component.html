@@ -2,42 +2,65 @@
     <h1>LISTA DE PROFESSORES</h1>
     <mat-table #table [dataSource]="dataSource">
 
-        <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-
         <!-- Name Column -->
-        <ng-container matColumnDef="Nome">
-            <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
-            <mat-cell *matCellDef="let element"> <a href="#">{{element.name}}</a> </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="Nome">
+      <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+      <mat-cell *matCellDef="let element"> <a href="#">{{element.name}}</a> </mat-cell>
+    </ng-container>
 
-        <!-- Weight Column -->
-        <ng-container matColumnDef="Telefone">
-            <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.phoneNumber}} </mat-cell>
-        </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Telefone">
+      <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="E-mail">
-            <mat-header-cell *matHeaderCellDef> E-mail </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
-        </ng-container>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Salário">
+      <mat-header-cell *matHeaderCellDef> Salário </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.salary | currency: 'BRL'}} </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="País">
-            <mat-header-cell *matHeaderCellDef> País </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.country}} </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="E-mail">
+      <mat-header-cell *matHeaderCellDef> E-mail </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="Cidade">
-            <mat-header-cell *matHeaderCellDef> Cidade </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="Rua">
+      <mat-header-cell *matHeaderCellDef> Rua </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.street}} </mat-cell>
+    </ng-container>
 
-        <ng-container matColumnDef="Estado">
-            <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.state}} </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="Número">
+      <mat-header-cell *matHeaderCellDef> Número </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.number}} </mat-cell>
+    </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+    <ng-container matColumnDef="Bairro">
+      <mat-header-cell *matHeaderCellDef> Bairro </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.district}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Cidade">
+      <mat-header-cell *matHeaderCellDef> Cidade </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Estado">
+      <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.state}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="CEP">
+      <mat-header-cell *matHeaderCellDef> CEP </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.cep}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="País">
+      <mat-header-cell *matHeaderCellDef> País </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.country}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 </div>
