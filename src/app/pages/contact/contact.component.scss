@@ -12,3 +12,14 @@
   text-align: center;
   margin-bottom: 25px;
 }
+
+.button {
+  position: relative;
+  width: 30%;
+  margin-top: 15px;
+  position: relative;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  border-radius: 5px;
+  height: 28px;
+}

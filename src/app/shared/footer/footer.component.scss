@@ -36,7 +36,6 @@
 .titleFooter span {
 
   display: inline-block;
-  font-family:'open_sansregular';
   font-size:1.3em;
   font-weight:900;
   color:#fff;
@@ -57,7 +56,7 @@
 
 }
 
-.colfooter p  { font-family:'open_sanslight'; color:#fff; font-size:1em; height:25px; }
+.colfooter p  { color:#fff; font-size:1em; height:25px; }
 
 .colfooter .redesocial {
 
@@ -97,7 +96,6 @@
 
 input[type="text"],textarea{
 
-    font-family:'open_sansregular';
     font-size:1em;
     color: #fff;
     width: 100%;
@@ -139,14 +137,13 @@ input[type="text"],textarea{
     padding: 0.3em 0em;
     border-radius:3px;
     font-size: 1.2em;
-    font-family:'open_sansregular';
     transition:0.2s;
 }
 
 .btn-enviar:hover { background-color:#33dbdf; color:#ffffff; border:1px #33dbdf solid; transition:0.2s; }
 
 .main_footer_copy { background-color:#3f51b5; width:100%; float:left; text-align:center; padding:1.5em 0em; }
-.main_footer_copy p { font-family:'open_sanslight'; font-size:1em; color:#fff; height:20px; }
+.main_footer_copy p { font-size:1em; color:#fff; height:20px; }
 .main_footer_copy .m-b-footer   { margin-bottom:0.5em; }
 .main_footer_copy .by   { font-size:0.96em; }
 .main_footer_copy .by a       { color:#0acbd1; text-decoration:none; transition:0.2s;}

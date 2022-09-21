@@ -54,9 +54,32 @@ p {
 }
 .example-card {
     max-width: 800px;
+    width: 500px;
     border-radius: 10px;
     margin: 10px;
     padding: 10px;
+    background-color: #3F51B5;
+    color: #ffffff;
+}
+
+.example-card2 {
+max-width: 800px;
+width: 500px;
+border-radius: 10px;
+margin: 10px;
+padding: 10px;
+background-color: #3949AB;
+color: #ffffff;
+}
+
+.example-card3 {
+max-width: 800px;
+width: 500px;
+border-radius: 10px;
+margin: 10px;
+padding: 10px;
+background-color: #303F9F;
+color: #ffffff;
 }
 
 mat-card-subtitle {
@@ -64,7 +87,7 @@ mat-card-subtitle {
 }
 
 mat-card-title {
-  color: blue;
+  color: #ffffff;
   size: 40px;
 }
 

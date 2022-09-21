@@ -7,12 +7,12 @@
           <div class="titleFooter"> <span class="icon icon-world"></span> Menu</div>
           <ul>
 
-            <li><a href="http://localhost:4200/main" title="Página Inícial">Página Inícial</a></li>
-            <li><a href="http://localhost:4200/main/cadastrostudent" title="Cadastro de Estudantes">Cadastrar Aluno</a></li>
-            <li><a href="http://localhost:4200/main/cadastroteacher" title="Cadastro de Professores">Cadastrar Professor</a></li>
-            <li><a href="http://localhost:4200/main/students" title="Lista de Alunos">Lista Alunos</a></li>
-            <li><a href="http://localhost:4200/main/teachers" title="Lista de Professores">Lista Professores</a></li>
-            <li><a href="http://localhost:4200/main/contact" title="Fale Conosco">Fale Conosco</a></li>
+            <li><a [routerLink]="'/main'" title="Página Inícial">Página Inícial</a></li>
+            <li><a [routerLink]="'/main/cadastrostudent'" title="Cadastro de Estudantes">Cadastrar Aluno</a></li>
+            <li><a [routerLink]="'/main/cadastroteacher'" title="Cadastro de Professores">Cadastrar Professor</a></li>
+            <li><a [routerLink]="'/main/students'" title="Lista de Alunos">Lista Alunos</a></li>
+            <li><a [routerLink]="'/main/teachers'" title="Lista de Professores">Lista Professores</a></li>
+            <li><a [routerLink]="'/main/contact'" title="Fale Conosco">Fale Conosco</a></li>
 
           </ul>
 
@@ -21,10 +21,10 @@
       <div class="colfooter">
 
         <div class="titleFooter"> <span class="icon icon-share-outline"></span> Redes Sociais</div>
-        <a href="#" class="redesocial"><span> <fa-icon [icon]="faFacebook"></fa-icon> PequenosGenios</span></a>
-        <a href="#" class="redesocial"><span> <fa-icon [icon]="faInstagram"></fa-icon> PequenosGenios</span></a>
-        <a href="#" class="redesocial"><span> <fa-icon [icon]="faLinkedin"></fa-icon> PequenosGenios</span></a>
-        <a href="#" class="redesocial"><span> <fa-icon [icon]="faTwitter"></fa-icon> PequenosGenios</span></a>
+        <a href="https://www.facebook.com/" target="_blank" class="redesocial"><span> <fa-icon [icon]="faFacebook"></fa-icon> PequenosGenios</span></a>
+        <a href="https://www.instagram.com/" target="_blank" class="redesocial"><span> <fa-icon [icon]="faInstagram"></fa-icon> PequenosGenios</span></a>
+        <a href="https://www.linkedin.com/" target="_blank" class="redesocial"><span> <fa-icon [icon]="faLinkedin"></fa-icon> PequenosGenios</span></a>
+        <a href="https://twitter.com/" target="_blank" class="redesocial"><span> <fa-icon [icon]="faTwitter"></fa-icon> PequenosGenios</span></a>
 
       </div><!--Col Footer 2-->
 
@@ -64,7 +64,7 @@
 
                 <label class="label">
 
-                    <textarea class="effect-line" name="mensagem" placeholder="Deixe sua mensagem" rows="2" autocomplete="off"></textarea>
+                    <textarea class="effect-line" name="mensagem" style="font-family: Roboto;" placeholder="Deixe sua mensagem" rows="2" autocomplete="off"></textarea>
                     <span class="focus-border"></span>
 
                 </label>
