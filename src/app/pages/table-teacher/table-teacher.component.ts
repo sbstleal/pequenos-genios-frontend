@@ -16,7 +16,7 @@ export class TableTeacherComponent {
     'E-mail',
     'País',
     'Cidade',
-    'Estado'
+    'Estado',
   ];
   dataSource = new MatTableDataSource<ITeacher>(ELEMENT_DATA);
 
