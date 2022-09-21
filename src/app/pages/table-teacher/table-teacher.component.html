@@ -1,20 +1,17 @@
 <div class="example-container mat-elevation-z8">
-    <h1>LISTA DE PROFESSORES</h1>
+    <h1 class="title">LISTA DE PROFESSORES</h1>
     <mat-table #table [dataSource]="dataSource">
 
-        <!-- Name Column -->
     <ng-container matColumnDef="Nome">
       <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
       <mat-cell *matCellDef="let element"> <a href="#">{{element.name}}</a> </mat-cell>
     </ng-container>
 
-    <!-- Weight Column -->
     <ng-container matColumnDef="Telefone">
       <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
     </ng-container>
 
-    <!-- Symbol Column -->
     <ng-container matColumnDef="Salário">
       <mat-header-cell *matHeaderCellDef> Salário </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.salary | currency: 'BRL'}} </mat-cell>
@@ -63,4 +60,7 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
+
+  <mat-paginator #paginator [pageSize]="8" [pageSizeOptions]="[5, 8, 20]">
+  </mat-paginator>
 </div>
