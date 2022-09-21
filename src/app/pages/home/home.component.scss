@@ -50,23 +50,24 @@
 }
 
 p {
-    font-family: Lato;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 .example-card {
     max-width: 800px;
+    border-radius: 10px;
     margin: 10px;
     padding: 10px;
 }
 
 mat-card-subtitle {
-    font-size: 30px
+  font-size: 30px;
 }
 
 mat-card-title {
-    color: blue;
-    size: 40px
+  color: blue;
+  size: 40px;
 }
 
-.cards{
+.cards {
   display: flex;
 }

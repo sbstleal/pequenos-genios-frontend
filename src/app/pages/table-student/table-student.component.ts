@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { IStudent } from '../../models/student';
+import { StudentService } from '../../services/student.service';
 
 @Component({
   selector: 'app-table-student',
   templateUrl: './table-student.component.html',
   styleUrls: ['./table-student.component.scss'],
 })
-export class TableStudentComponent {
+export class TableStudentComponent implements OnInit {
+  student: IStudent[] = [];
+
   displayedColumns = [
     'Nome',
     'Telefone',
@@ -21,76 +24,19 @@ export class TableStudentComponent {
     'CEP',
     'País',
   ];
-  dataSource = new MatTableDataSource<IStudent>(ELEMENT_DATA);
-}
+  dataSource = new MatTableDataSource<IStudent>();
 
-const ELEMENT_DATA: IStudent[] = [
-  {
-    name: 'Carlos',
-    phoneNumber: '83988350839',
-    fee: 122.79,
-    email: 'sbstleal@gmail.com',
-    street: 'Rua da Silva',
-    city: 'Natal',
-    country: 'Brasil',
-    postalCode: '58085330',
-    state: 'Rio Grande do Norte',
-    number: 154
-  },
-  {
-    name: 'Carlos',
-    phoneNumber: '83988350839',
-    fee: 122.79,
-    email: 'sbstleal@gmail.com',
-    street: 'Rua da Silva',
-    city: 'Natal',
-    country: 'Brasil',
-    postalCode: '58085330',
-    state: 'Rio Grande do Norte',
-    number: 154
-  },  {
-    name: 'Carlos',
-    phoneNumber: '83988350839',
-    fee: 122.79,
-    email: 'sbstleal@gmail.com',
-    street: 'Rua da Silva',
-    city: 'Natal',
-    country: 'Brasil',
-    postalCode: '58085330',
-    state: 'Rio Grande do Norte',
-    number: 154
-  },  {
-    name: 'Carlos',
-    phoneNumber: '83988350839',
-    fee: 122.79,
-    email: 'sbstleal@gmail.com',
-    street: 'Rua da Silva',
-    city: 'Natal',
-    country: 'Brasil',
-    postalCode: '58085330',
-    state: 'Rio Grande do Norte',
-    number: 154
-  },  {
-    name: 'Carlos',
-    phoneNumber: '83988350839',
-    fee: 122.79,
-    email: 'sbstleal@gmail.com',
-    street: 'Rua da Silva',
-    city: 'Natal',
-    country: 'Brasil',
-    postalCode: '58085330',
-    state: 'Rio Grande do Norte',
-    number: 154
-  },  {
-    name: 'Carlos',
-    phoneNumber: '83988350839',
-    fee: 122.79,
-    email: 'sbstleal@gmail.com',
-    street: 'Rua da Silva',
-    city: 'Natal',
-    country: 'Brasil',
-    postalCode: '58085330',
-    state: 'Rio Grande do Norte',
-    number: 154
-  },
-];
+  constructor(private stundentService: StudentService) {}
+
+  ngOnInit() {
+    this.getStudentsInformation();
+  }
+
+  getStudentsInformation(){
+    this.stundentService.getAllStudents()
+      .subscribe((res)=>{
+        console.log(res);
+        this.dataSource.data = res;
+      })
+  }
+}

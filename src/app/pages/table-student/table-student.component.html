@@ -1,13 +1,11 @@
 <div class="example-container mat-elevation-z8">
+  <h1>LISTA DE ALUNOS</h1>
   <mat-table #table [dataSource]="dataSource">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
 
     <!-- Name Column -->
     <ng-container matColumnDef="Nome">
       <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      <mat-cell *matCellDef="let element"> <a href="#">{{element.name}}</a> </mat-cell>
     </ng-container>
 
     <!-- Weight Column -->
