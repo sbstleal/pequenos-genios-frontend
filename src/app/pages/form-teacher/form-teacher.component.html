@@ -28,7 +28,7 @@
         </td>
         <td>
           <mat-form-field class="form-element">
-            <input matInput mask="(00) 00000-0000" placeholder="Telefone Ex: (00) 00000-0000" formControlName="phone" [(ngModel)]="teacher.phoneNumber">
+            <input matInput mask="(00) 00000-0000" placeholder="Telefone Ex: (00) 00000-0000" formControlName="phone" [(ngModel)]="teacher.phone">
             <mat-error *ngIf="!formGroup.controls['phone'].valid && formGroup.controls['phone'].touched">
               {{ getFeeEmail() }}
             </mat-error>
@@ -41,8 +41,8 @@
       <tr>
         <td>
           <mat-form-field class="form-element">
-            <input matInput placeholder="CEP" (blur)="findPostalCode()" mask="00000-000" formControlName="postalcode" [(ngModel)]="teacher.postalCode">
-            <mat-error *ngIf="!postalcode.valid && postalcode.touched">
+            <input matInput placeholder="CEP" (blur)="findCep()" mask="00000-000" formControlName="cep" [(ngModel)]="teacher.cep">
+            <mat-error *ngIf="!getCep.valid && getCep.touched">
               {{ titleAlert }}
             </mat-error>
           </mat-form-field>
@@ -65,6 +65,19 @@
           <mat-form-field class="form-element">
             <input matInput placeholder="Logradouro" formControlName="street" [(ngModel)]="teacher.street">
             <mat-error *ngIf="!street.valid && street.touched">
+              {{ titleAlert }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <table class="form-element" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="form-element">
+            <input matInput placeholder="Bairro" formControlName="district" [(ngModel)]="teacher.district">
+            <mat-error *ngIf="!district.valid && district.touched">
               {{ titleAlert }}
             </mat-error>
           </mat-form-field>

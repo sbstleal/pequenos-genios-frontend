@@ -1,10 +1,11 @@
 export interface ITeacher {
   name: string
-  phoneNumber: string
+  phone: string
   email: string
   salary: string
   country: string
-  postalCode: string
+  district: string
+  cep: string
   city: string
   street: string
   state: string

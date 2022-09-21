@@ -45,15 +45,16 @@ export class FormTeacherComponent implements OnInit {
     let phoneregex: RegExp =
       /^\s*(\d{2}|\d{0})[-. ]?(\d{5}|\d{4})[-. ]?(\d{4})[-. ]?\s*$/;
     let nameregex: RegExp = /^([a-zA-Zà-úÀ-Ú]|-|_|\s)+$/;
-    let postalcode: RegExp = /^(\d{0,5}|\d{5}\d{0,3})$/;
+    let cep: RegExp = /^(\d{0,5}|\d{5}\d{0,3})$/;
     let numberRegex: RegExp = /^\d+$/;
     this.formGroup = this.formBuilder.group({
       name: [null, [Validators.required, Validators.pattern(nameregex)]],
       phone: [null, [Validators.required, Validators.pattern(phoneregex)]],
       email: [null, [Validators.required, Validators.email]],
       salary: [null, [Validators.required, Validators.min(10.0)]],
-      postalcode: [null, [Validators.required, Validators.pattern(postalcode)]],
+      cep: [null, [Validators.required, Validators.pattern(cep)]],
       street: [null, Validators.required],
+      district: [null, Validators.required],
       state: [null, Validators.required],
       city: [null, Validators.required],
       country: [null, Validators.required],
@@ -66,12 +67,16 @@ export class FormTeacherComponent implements OnInit {
     return this.formGroup.get('phone') as FormControl;
   }
 
-  get postalcode() {
-    return this.formGroup.get('postalcode') as FormControl;
+  get getCep() {
+    return this.formGroup.get('cep') as FormControl;
   }
 
   get street() {
     return this.formGroup.get('street') as FormControl;
+  }
+
+  get district() {
+    return this.formGroup.get('district') as FormControl;
   }
 
   get city() {
@@ -148,8 +153,8 @@ export class FormTeacherComponent implements OnInit {
     });
   }
 
-  public async findPostalCode(){
-    this.cep = await this.cepService.getViaCep(this.teacher.postalCode);
+  public async findCep(){
+    this.cep = await this.cepService.getViaCep(this.teacher.cep);
     if(this.cep){
       this.teacher.street = this.cep.logradouro
       this.teacher.city = this.cep.localidade
