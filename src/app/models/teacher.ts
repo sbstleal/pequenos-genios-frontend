@@ -11,3 +11,6 @@ export interface ITeacher {
   state: string
   number: number
 }
+
+
+

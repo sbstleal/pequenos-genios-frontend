@@ -1,5 +1,6 @@
 <div class="example-container mat-elevation-z8">
   <h1>LISTA DE ALUNOS</h1>
+
   <mat-table #table [dataSource]="dataSource">
 
     <!-- Name Column -->
@@ -11,13 +12,13 @@
     <!-- Weight Column -->
     <ng-container matColumnDef="Telefone">
       <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.phoneNumber}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="Mensalidade">
       <mat-header-cell *matHeaderCellDef> Mensalidade </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.fee | currency: 'BRL'}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.fees | currency: 'BRL'}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="E-mail">
@@ -35,6 +36,11 @@
       <mat-cell *matCellDef="let element"> {{element.number}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="Bairro">
+      <mat-header-cell *matHeaderCellDef> Bairro </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.district}} </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="Cidade">
       <mat-header-cell *matHeaderCellDef> Cidade </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
@@ -47,7 +53,7 @@
 
     <ng-container matColumnDef="CEP">
       <mat-header-cell *matHeaderCellDef> CEP </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.postalCode}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.cep}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="País">
@@ -59,3 +65,4 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 </div>
+
