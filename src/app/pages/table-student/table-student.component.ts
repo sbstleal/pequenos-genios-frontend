@@ -32,11 +32,10 @@ export class TableStudentComponent implements OnInit {
     this.getStudentsInformation();
   }
 
-  getStudentsInformation(){
-    this.stundentService.getAllStudents()
-      .subscribe((res)=>{
-        console.log(res);
-        this.dataSource.data = res;
-      })
+  getStudentsInformation() {
+    this.stundentService.getAllStudents().subscribe((res) => {
+      console.log(res);
+      this.dataSource.data = res;
+    });
   }
 }

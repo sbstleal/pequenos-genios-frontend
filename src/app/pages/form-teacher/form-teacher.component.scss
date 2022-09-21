@@ -10,12 +10,15 @@ td {
 
 .container {
   padding: 20px;
+  text-align: center;
 }
 
 .form {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-element {
@@ -23,21 +26,19 @@ td {
   width: 100%;
 }
 
+.title {
+  width: 100%;
+}
+
 .form-element-group {
   width: 100%;
 }
 
-.title {
-  width: 100%;
-  margin-left: 5px;
-}
-
 .button {
   position: relative;
-  width: 15%;
-  margin-top: 20px;
-  margin-left: 5px;
-  position: absolute;
+  width: 30%;
+  margin-top: 15px;
+  position: relative;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }

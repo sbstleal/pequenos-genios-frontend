@@ -51,7 +51,7 @@ export class FormStudentComponent implements OnInit {
       name: [null, [Validators.required, Validators.pattern(nameRegex)]],
       phone: [null, [Validators.required, Validators.pattern(phoneRegex)]],
       email: [null, [Validators.required, Validators.pattern(emailRegex)]],
-      fee: [null, [Validators.required, Validators.min(10.0)]],
+      fees: [null, [Validators.required, Validators.min(10.0)]],
       cep: [null, [Validators.required, Validators.pattern(cepRegex)]],
       street: [null, Validators.required],
       state: [null, Validators.required],
@@ -108,7 +108,7 @@ export class FormStudentComponent implements OnInit {
       : '';
   }
 
-  getErrorFee() {
+  getErrorFees() {
     return this.formGroup.get('fee')?.hasError('required')
       ? 'Este campo é obrigatório'
       : this.formGroup.get('fee')?.hasError('min')
