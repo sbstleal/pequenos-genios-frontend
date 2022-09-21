@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs/internal/Observable';
 import { Cep } from 'src/app/models/cep';
 import { IStudent } from 'src/app/models/student';
 import { CepService } from 'src/app/services/cep.service';
@@ -51,14 +50,15 @@ export class FormStudentComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       name: [null, [Validators.required, Validators.pattern(nameregex)]],
       phone: [null, [Validators.required, Validators.pattern(phoneregex)]],
-      email: [null, [Validators.required, Validators.pattern(emailregex)], this.checkInUseEmail],
+      email: [null, [Validators.required, Validators.pattern(emailregex)]],
       fee: [null, [Validators.required, Validators.min(10.0)]],
       postalcode: [null, [Validators.required, Validators.pattern(postalcode)]],
       street: [null, Validators.required],
       state: [null, Validators.required],
       city: [null, Validators.required],
       country: [null, Validators.required],
-      number: [null, [Validators.required, Validators.pattern(numberRegex)]]
+      number: [null, [Validators.required, Validators.pattern(numberRegex)]],
+      district: [null, [Validators.required, Validators.pattern(nameregex)]]
     });
   }
 
@@ -86,17 +86,8 @@ export class FormStudentComponent implements OnInit {
     return this.formGroup.get('country') as FormControl;
   }
 
-  checkInUseEmail(control: { value: string }) {
-    // mimic http database access
-    let db = ['tony@gmail.com'];
-    return new Observable((observer) => {
-      setTimeout(() => {
-        let result =
-          db.indexOf(control.value) !== -1 ? { alreadyInUse: true } : null;
-        observer.next(result);
-        observer.complete();
-      }, 4000);
-    });
+  get district() {
+    return this.formGroup.get('district') as FormControl;
   }
 
   getErrorEmail() {
@@ -142,11 +133,12 @@ export class FormStudentComponent implements OnInit {
   }
 
   public async findPostalCode(){
-    this.cep = await this.cepService.getViaCep(this.student.postalCode);
+    this.cep = await this.cepService.getViaCep(this.student.cep);
     if(this.cep){
       this.student.street = this.cep.logradouro
       this.student.city = this.cep.localidade
       this.student.state = this.cep.uf
+      this.student.district = this.cep.bairro
     }
   }
 
@@ -159,6 +151,7 @@ export class FormStudentComponent implements OnInit {
   public async postStudent(){
     try{
         await this.studentService.postStudent(this.formGroup.getRawValue());
+        console.log(this.student);
         this.formGroup.reset();
         this.openSnackBar(this.success, this.action);
       }
