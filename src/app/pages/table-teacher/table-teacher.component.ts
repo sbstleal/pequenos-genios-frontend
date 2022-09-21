@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { TeacherService } from 'src/app/services/teacher.service';
 
@@ -38,6 +39,12 @@ export class TableTeacherComponent implements OnInit{
       console.log(res);
       this.dataSource.data = res.content;
     });
+  }
+
+  @ViewChild('paginator') paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
 }

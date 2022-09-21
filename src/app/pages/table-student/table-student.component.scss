@@ -7,6 +7,14 @@
   margin-right: auto;
 }
 
+.title {
+  display: table;
+  width: 95%;
+  text-align: center;
+  margin: 20px 10px 10px 10px;
+  font-weight: 500;
+}
+
 .mat-table {
   display: inline-block;
   vertical-align: middle;
