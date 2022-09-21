@@ -27,7 +27,7 @@ export class FormStudentComponent implements OnInit {
   }
 
   public student: IStudent = {} as IStudent;
-  public cep:Cep|undefined = {} as Cep;
+  public cepApi:Cep|undefined = {} as Cep;
 
   success = 'Salvo com sucesso!';
   action = 'fechar';
@@ -40,25 +40,25 @@ export class FormStudentComponent implements OnInit {
   ];
 
   createForm() {
-    let emailregex: RegExp =
+    let emailRegex: RegExp =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    let phoneregex: RegExp =
+    let phoneRegex: RegExp =
       /^\s*(\d{2}|\d{0})[-. ]?(\d{5}|\d{4})[-. ]?(\d{4})[-. ]?\s*$/;
-    let nameregex: RegExp = /^([a-zA-Zà-úÀ-Ú]|-|_|\s)+$/;
-    let postalcode: RegExp = /^(\d{0,5}|\d{5}\d{0,3})$/;
+    let nameRegex: RegExp = /^([a-zA-Zà-úÀ-Ú]|-|_|\s)+$/;
+    let cepRegex: RegExp = /^(\d{0,5}|\d{5}\d{0,3})$/;
     let numberRegex: RegExp = /^\d+$/;
     this.formGroup = this.formBuilder.group({
-      name: [null, [Validators.required, Validators.pattern(nameregex)]],
-      phone: [null, [Validators.required, Validators.pattern(phoneregex)]],
-      email: [null, [Validators.required, Validators.pattern(emailregex)]],
+      name: [null, [Validators.required, Validators.pattern(nameRegex)]],
+      phone: [null, [Validators.required, Validators.pattern(phoneRegex)]],
+      email: [null, [Validators.required, Validators.pattern(emailRegex)]],
       fee: [null, [Validators.required, Validators.min(10.0)]],
-      postalcode: [null, [Validators.required, Validators.pattern(postalcode)]],
+      cep: [null, [Validators.required, Validators.pattern(cepRegex)]],
       street: [null, Validators.required],
       state: [null, Validators.required],
       city: [null, Validators.required],
       country: [null, Validators.required],
       number: [null, [Validators.required, Validators.pattern(numberRegex)]],
-      district: [null, [Validators.required, Validators.pattern(nameregex)]]
+      district: [null, [Validators.required, Validators.pattern(nameRegex)]]
     });
   }
 
@@ -66,8 +66,8 @@ export class FormStudentComponent implements OnInit {
     return this.formGroup.get('phone') as FormControl;
   }
 
-  get postalcode() {
-    return this.formGroup.get('postalcode') as FormControl;
+  get cep() {
+    return this.formGroup.get('cep') as FormControl;
   }
 
   get street() {
@@ -133,12 +133,12 @@ export class FormStudentComponent implements OnInit {
   }
 
   public async findPostalCode(){
-    this.cep = await this.cepService.getViaCep(this.student.cep);
-    if(this.cep){
-      this.student.street = this.cep.logradouro
-      this.student.city = this.cep.localidade
-      this.student.state = this.cep.uf
-      this.student.district = this.cep.bairro
+    this.cepApi = await this.cepService.getViaCep(this.student.cep);
+    if(this.cepApi){
+      this.student.street = this.cepApi.logradouro
+      this.student.city = this.cepApi.localidade
+      this.student.state = this.cepApi.uf
+      this.student.district = this.cepApi.bairro
     }
   }
 
@@ -151,7 +151,7 @@ export class FormStudentComponent implements OnInit {
   public async postStudent(){
     try{
         await this.studentService.postStudent(this.formGroup.getRawValue());
-        console.log(this.student);
+        console.log(this.formGroup);
         this.formGroup.reset();
         this.openSnackBar(this.success, this.action);
       }
