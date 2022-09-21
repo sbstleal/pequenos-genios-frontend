@@ -6,7 +6,15 @@
     margin-left: auto;
     margin-right: auto;
   }
-  
+
+  .title {
+    display: table;
+    width: 95%;
+    text-align: center;
+    margin: 10px 10px 10px 10px;
+    font-weight: 500;
+  }
+
   .mat-table {
     display: inline-block;
     vertical-align: middle;
@@ -17,7 +25,7 @@
     text-decoration: none;
     color: #000;
     font-weight: 500;
-  
+
     &:visited, &:hover, &:focus, &:hover {
       text-decoration: none;
       color: #000;
