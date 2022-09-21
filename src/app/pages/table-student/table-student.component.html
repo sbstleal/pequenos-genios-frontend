@@ -6,19 +6,16 @@
 
   <mat-table #table [dataSource]="dataSource">
 
-    <!-- Name Column -->
     <ng-container matColumnDef="Nome">
       <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
       <mat-cell *matCellDef="let element"> <a href="#">{{element.name}}</a> </mat-cell>
     </ng-container>
 
-    <!-- Weight Column -->
     <ng-container matColumnDef="Telefone">
       <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
     </ng-container>
 
-    <!-- Symbol Column -->
     <ng-container matColumnDef="Mensalidade">
       <mat-header-cell *matHeaderCellDef> Mensalidade </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.fees | currency: 'BRL'}} </mat-cell>
