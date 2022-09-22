@@ -20,6 +20,7 @@ export class FormStudentComponent implements OnInit {
 
   formGroup: FormGroup;
   titleAlert: string = 'Este campo é obrigatório';
+  id: number | null;
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient,
     private studentService: StudentService, private cepService: CepService,
@@ -188,8 +189,10 @@ export class FormStudentComponent implements OnInit {
 
   private fillStudentForm() {
     const id = this.activeRouter.snapshot.paramMap.get('id')
-    if (id != null) {
-      this.studentService.findStudentsById(Number.parseInt(id)).subscribe({
+    if (this.activeRouter.snapshot.paramMap.get('id')) {
+      this.id = Number.parseInt(this.activeRouter.snapshot.paramMap.get('id')!);
+
+      this.studentService.findStudentsById(this.id).subscribe({
         next: (res) => {
           this.formGroup.patchValue(res)
         },

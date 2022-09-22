@@ -1,9 +1,14 @@
 import { async } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Cep } from 'src/app/models/cep';
 import { ITeacher } from 'src/app/models/teacher';
@@ -13,16 +18,23 @@ import { TeacherService } from 'src/app/services/teacher.service';
 @Component({
   selector: 'app-form-teacher',
   templateUrl: './form-teacher.component.html',
-  styleUrls: ['./form-teacher.component.scss']
+  styleUrls: ['./form-teacher.component.scss'],
 })
 export class FormTeacherComponent implements OnInit {
-
   formGroup: FormGroup;
   titleAlert: string = 'Este campo é obrigatório';
+  isEdit: boolean = false;
+  id: number;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient,
-    private teacherService: TeacherService, private cepService: CepService,
-    private _snackBar: MatSnackBar, private activeRouter: ActivatedRoute) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private teacherService: TeacherService,
+    private cepService: CepService,
+    private _snackBar: MatSnackBar,
+    private activeRouter: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -38,7 +50,7 @@ export class FormTeacherComponent implements OnInit {
   countrySelected = [
     {
       value: 'Brasil',
-      viewValue: 'Brasil'
+      viewValue: 'Brasil',
     },
   ];
 
@@ -61,10 +73,9 @@ export class FormTeacherComponent implements OnInit {
       state: [null, Validators.required],
       city: [null, Validators.required],
       country: [null, Validators.required],
-      number: [null, [Validators.required, Validators.pattern(numberRegex)]]
+      number: [null, [Validators.required, Validators.pattern(numberRegex)]],
     });
   }
-
 
   get phone() {
     return this.formGroup.get('phone') as FormControl;
@@ -94,7 +105,6 @@ export class FormTeacherComponent implements OnInit {
     return this.formGroup.get('district') as FormControl;
   }
 
-  
   checkInUseEmail(control: { value: string }) {
     // mimic http database access
     let db = ['tony@gmail.com'];
@@ -112,44 +122,43 @@ export class FormTeacherComponent implements OnInit {
     return this.formGroup.get('email')?.hasError('required')
       ? 'Este campo é obrigatório'
       : this.formGroup.get('email')?.hasError('pattern')
-        ? 'Não é um endereço de e-mail válido'
-        : this.formGroup.get('email')?.hasError('alreadyInUse')
-          ? 'Este endereço de e-mail já está em uso'
-          : '';
+      ? 'Não é um endereço de e-mail válido'
+      : this.formGroup.get('email')?.hasError('alreadyInUse')
+      ? 'Este endereço de e-mail já está em uso'
+      : '';
   }
 
   getErrorName() {
     return this.formGroup.get('name')?.hasError('required')
       ? 'Este campo é obrigatório'
       : this.formGroup.get('name')?.hasError('pattern')
-        ? 'Não é um nome válido'
-        : '';
+      ? 'Não é um nome válido'
+      : '';
   }
 
   getErrorFee() {
     return this.formGroup.get('fee')?.hasError('required')
       ? 'Este campo é obrigatório'
       : this.formGroup.get('fee')?.hasError('min')
-        ? 'Mensalidade mínima de R$10.00'
-        : '';
+      ? 'Mensalidade mínima de R$10.00'
+      : '';
   }
 
   getErrorPhone() {
     return this.formGroup.get('phone')?.hasError('required')
       ? 'Este campo é obrigatório'
       : this.formGroup.get('phone')?.hasError('pattern')
-        ? 'Não é um número de telefone válido'
-        : '';
+      ? 'Não é um número de telefone válido'
+      : '';
   }
 
   getErrorNumber() {
     return this.formGroup.get('number')?.hasError('required')
       ? 'Este campo é obrigatório'
       : this.formGroup.get('number')?.hasError('pattern')
-        ? 'Não é um número de endereço válido'
-        : '';
+      ? 'Não é um número de endereço válido'
+      : '';
   }
-
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
@@ -160,45 +169,63 @@ export class FormTeacherComponent implements OnInit {
   public async findCep() {
     this.cep = await this.cepService.getViaCep(this.teacher.cep);
     if (this.cep) {
-      this.teacher.street = this.cep.logradouro
-      this.teacher.city = this.cep.localidade
-      this.teacher.state = this.cep.uf
-      this.teacher.district = this.cep.bairro
+      this.teacher.street = this.cep.logradouro;
+      this.teacher.city = this.cep.localidade;
+      this.teacher.state = this.cep.uf;
+      this.teacher.district = this.cep.bairro;
     }
   }
 
   public async saveTeacher() {
     try {
-      if (this.teacher.id) {
-        await this.teacherService.updateTeacher(this.teacher)
-        this.formGroup.reset()
-        this.openSnackBar(this.success, this.action)
-        setTimeout(() => {this.activeRouter.root}, 3000);
+      if (this.isEdit) {
+        await this.teacherService.updateTeacher(this.teacher);
+        this.formGroup.reset();
+        this.openSnackBar(this.success, this.action);
+        setTimeout(() => {
+          this.activeRouter.root;
+        }, 3000);
+      } else {
+        await this.teacherService.postTeacher(this.teacher);
+        this.formGroup.reset();
+        this.openSnackBar(this.success, this.action);
       }
-      else {
-        await this.teacherService.postTeacher(this.teacher)
-        this.formGroup.reset()
-        this.openSnackBar(this.success, this.action)
-      }
-    }
-    catch (e: any) {
-      console.log('error')
-      console.log(this.teacher)
-      this.openSnackBar('Error', this.action)
+    } catch (e: any) {
+      console.log('error');
+      console.log(this.teacher);
+      this.openSnackBar('Error', this.action);
     }
   }
 
   private fillTeacherForm() {
-    const id = this.activeRouter.snapshot.paramMap.get('id')
-    if (id != null) {
-      this.teacherService.findTeacherById(Number.parseInt(id)).subscribe({
+    if (this.activeRouter.snapshot.paramMap.get('id')) {
+      this.isEdit = true;
+      this.id = Number.parseInt(this.activeRouter.snapshot.paramMap.get('id')!);
+      this.teacherService.findTeacherById(this.id).subscribe({
         next: (res) => {
-          this.formGroup.patchValue(res)
+          this.formGroup.patchValue(res);
         },
         error: (ex) => {
-          console.log(ex)
+          console.log(ex);
+        },
+      });
+    }
+  }
+
+  delete() {
+    if (confirm('Você está prestes a apagar esse registro, esta ação não pode ser desfeita!'))
+     {
+      this.teacherService.delete(this.id).subscribe({
+        next: (n) => {
+          this.openSnackBar('Registro apagado com sucesso', 'fechar');
+          this.router.navigateByUrl('/main/teachers');
+        },
+        error: (e) => {
+          alert('erro aconteceu: ' + e)
         }
-      })
+      });
+    } else {
+      alert('cancelado!')
     }
   }
 }

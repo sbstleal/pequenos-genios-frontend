@@ -1,5 +1,5 @@
 <div class="container" novalidate>
-  <form [formGroup]="formGroup" (ngSubmit)="saveTeacher()" class="form">
+  <form [formGroup]="formGroup" class="form">
 
     <h2 class="title">Formulário de Professor</h2>
 
@@ -129,8 +129,11 @@
     </table>
 
     <div>
-      <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Salvar
+      <button class="me-1" mat-raised-button color="primary" type="submit" (click)="saveTeacher()" class="button" [disabled]="!formGroup.valid">{{isEdit ? 'Atualizar' : 'Cadastrar'}}
       </button>
+      <button *ngIf="isEdit" mat-raised-button color="warn" class="button" (click)="delete()">Apagar
+      </button>
+
     </div>
 
   </form>
