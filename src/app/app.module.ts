@@ -27,6 +27,8 @@ import { TableTeacherComponent } from './pages/table-teacher/table-teacher.compo
 import { CarouselComponent } from './pages/home/carousel/carousel.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SearchBarComponent } from './shared/search-bar/search-bar.component';
+import { FormClassComponent } from './pages/form-class/form-class.component';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         LoaderComponent,
         TableTeacherComponent,
         CarouselComponent,
-        ContactComponent
+        ContactComponent,
+        FormClassComponent,
+        SearchBarComponent
     ],
     imports: [
         BrowserModule,
@@ -56,7 +60,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         NgxMaskModule.forRoot(),
         CurrencyMaskModule,
         FontAwesomeModule,
-        HttpClientModule
+        HttpClientModule,
     ],
     providers: [
       AuthGuard,
