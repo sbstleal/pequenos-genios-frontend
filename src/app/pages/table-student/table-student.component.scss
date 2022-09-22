@@ -16,9 +16,17 @@
 }
 
 .mat-table {
+  
   display: inline-block;
   vertical-align: middle;
   width: 100%;
+}
+.mat-row:hover {
+  background: rgba(76, 175, 80, 0.3);
+}
+.mat-cell {
+  padding: 8px;
+  align-items: center !important;
 }
 
 a {

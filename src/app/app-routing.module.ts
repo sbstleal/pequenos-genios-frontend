@@ -33,8 +33,13 @@ const routes: Routes = [
       }, {
         path: 'cadastrostudent',
         component: FormStudentComponent,
-        canActivate: [AuthGuard],
-        canLoad: [AuthGuard]
+        canActivate: [AuthGuard]//,
+        //canLoad: [AuthGuard]
+      },
+      {
+        path: 'cadastrostudent/:id',
+        component: FormStudentComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'cadastroteacher',

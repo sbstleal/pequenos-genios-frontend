@@ -31,11 +31,15 @@ export class TableStudentComponent implements OnInit {
 
   constructor(private stundentService: StudentService, private activeRouter: ActivatedRoute) { }
 
+  //ngOnInit() {
+  //  this.getStudentsInformation();
+  //  const id = this.activeRouter.snapshot.paramMap.get('id');
+  //  if (id != null) { console.log("\n ************************" + id + "************************ \n") }
+
+  //}
+
   ngOnInit() {
     this.getStudentsInformation();
-    const id = this.activeRouter.snapshot.paramMap.get('id');
-    if (id != null) { console.log("\n ************************" + id + "************************ \n") }
-
   }
 
   getStudentsInformation() {
