@@ -1,27 +1,62 @@
-# AppPg
+<h3> 🏫 &nbsp;PEQUENOS GÊNIOS <h3/>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
+- 📚 &nbsp; Desafio final do 1º **DEV FOR TECH by ACATE** desenvolvido pela Gama Academy: <a href="https://drive.google.com/file/d/1sG0nCl7868g2TRcnQ5rYnyhQ9YctgKAx/view?usp=sharing" target="_blank">detalhamento sobre o projeto</a>.
+- 🛠 &nbsp; Desenvolvido por **Antônio Gabriel Sgarbi Kadzerski, Carlos Roberto de Oliveira Junior, Denis William Mamoni, Hugo Vinícius Valentim Damasceno, Ricardo L. Machado e Sebastião Leal**.
 
-## Development server
+ ---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+*Ferramentas de Desenvolvimento Utilizadas*
 
-## Code scaffolding
+![Visual Studio Code](https://img.shields.io/badge/-Visual%20Studio%20Code-333333?style=flat&logo=visual-studio-code&logoColor=007ACC)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+*Utilitários*
 
-## Build
+![Postman](https://img.shields.io/badge/-Postman-333333?style=flat&logo=postman)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+*DevOps*
 
-## Running unit tests
+![Git](https://img.shields.io/badge/-Git-333333?style=flat&logo=git)
+![GitHub](https://img.shields.io/badge/-GitHub-333333?style=flat&logo=github)
+![Netlify](https://img.shields.io/badge/Netlify-333333?style=flat&logo=netlify&logoColor=Netlify)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+*Linguagens e Frameworks e bibliotecas*
 
-## Running end-to-end tests
+![Angular](https://img.shields.io/badge/Angular-333333?style=flat&logo=angular&logoColor=Angular)
+![JavaScript](https://img.shields.io/badge/-JavaScript-333333?style=flat&logo=javascript)
+![TypeScript](https://img.shields.io/badge/-TypeScript-333333?style=flat&logo=typescript)  
+![Sass](https://img.shields.io/badge/Sass-333333?style=flat&logo=sass&logoColor=sass)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-333333?style=flat&logo=bootstrap&logoColor=Bootstrap)
+![AngularMaterial](https://img.shields.io/badge/Material--Angular-333333?style=for-the-badge&logo=material-angular&logoColor=material-angular)
+  
+---
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 🖥️ Servidor de Desenvolvimento
 
-## Further help
+Para clonar o repositório do git:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. git remote add origin git remote add origin https://github.com/sbstleal/pequenos-genios-frontend.git
+2. git branch -M main
+3. git push -u origin main
+
+Angular:
+
+- Instalar o Angular CLI no projeto:
+- npm install -g @angular/cli
+- Instalar as dependências:
+- npm install
+- Executar o projeto:
+- ng serve
+- Porta de desenvolvimento:
+- http://localhost:4200
+
+---
+
+<h2> 💼 &nbsp;Caso deseje saber mais sobre os integrantes, abaixo encontra-se nosso Linkedin: <h2/>
+
+[![Linkedin: antonio](https://img.shields.io/badge/-Antônio-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/agsk)](https://www.linkedin.com/in/agsk)
+[![Linkedin: carlos](https://img.shields.io/badge/-Carlos-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/karlinhos987/)](https://www.linkedin.com/in/karlinhos987/)
+[![Linkedin: denis](https://img.shields.io/badge/-Denis-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/denis-william-mamoni/)](https://www.linkedin.com/in/denis-william-mamoni/)
+
+[![Linkedin: hugo](https://img.shields.io/badge/-Hugo-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/hugo-damasceno/)](https://www.linkedin.com/in/hugo-damasceno/)
+[![Linkedin: ricardo](https://img.shields.io/badge/-Ricardo-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/ricardolmachado/)](https://www.linkedin.com/in/ricardolmachado/)
+[![Linkedin: sebastião](https://img.shields.io/badge/-Sebastião-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/sbstleal/)](https://www.linkedin.com/in/sbstleal/)
