@@ -12,6 +12,7 @@ import {LoginLayoutComponent} from "./pages/login-layout/login-layout.component"
 import {HomeLayoutComponent} from "./pages/home-layout/home-layout.component";
 import { TableTeacherComponent } from './pages/table-teacher/table-teacher.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import {FormClassComponent} from "./pages/form-class/form-class.component";
 
 
 const routes: Routes = [
@@ -39,6 +40,16 @@ const routes: Routes = [
       {
         path: 'cadastroteacher',
         component: FormTeacherComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'cadastroclass',
+        component: FormClassComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'cadastroclass/:id',
+        component: FormClassComponent,
         canActivate: [AuthGuard]
       },
       {

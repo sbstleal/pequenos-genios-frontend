@@ -1,0 +1,48 @@
+<form action="submit" class="p-5">
+  <mat-form-field class="w-100">
+    <mat-label>Turma</mat-label>
+    <mat-select [(value)]="gradeSelected">
+      <mat-option [value]="1">1</mat-option>
+      <mat-option [value]="2">2</mat-option>
+      <mat-option [value]="3">3</mat-option>
+      <mat-option [value]="4">4</mat-option>
+      <mat-option [value]="5">5</mat-option>
+      <mat-option [value]="6">6</mat-option>
+      <mat-option [value]="7">7</mat-option>
+      <mat-option [value]="8">8</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="teacherSelected" class="d-flex">
+    <p class="pe-1"> professor Selecionado: </p>
+    <p class="teacherName" (click)="removeTeacher()">{{ teacherSelected.name }}</p>
+  </div>
+  <search-bar *ngIf="!teacherSelected" [model]="modelTeacher" (onSelect)="teacherChanged($event)"  ></search-bar>
+
+  <search-bar [model]="modelStudent" (onSelect)="studentChanged($event)"></search-bar>
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="Nome">
+      <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Telefone">
+      <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="E-mail">
+      <mat-header-cell *matHeaderCellDef> E-mail </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row (click)="removeItem(row)" class="table-row" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <button class="w-100 mt-4" color="primary" mat-raised-button (click)="submit()">{{isEdit ? 'Atualizar': 'Cadastrar'}}</button>
+  <button class="w-100 mt-2" *ngIf="isEdit" mat-raised-button color="warn" (click)="delete()">Apagar</button>
+
+</form>
