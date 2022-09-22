@@ -34,8 +34,13 @@ const routes: Routes = [
       }, {
         path: 'cadastrostudent',
         component: FormStudentComponent,
-        canActivate: [AuthGuard],
-        canLoad: [AuthGuard]
+        canActivate: [AuthGuard]//,
+        //canLoad: [AuthGuard]
+      },
+      {
+        path: 'cadastrostudent/:id',
+        component: FormStudentComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'cadastroteacher',
@@ -50,6 +55,11 @@ const routes: Routes = [
       {
         path: 'cadastroclass/:id',
         component: FormClassComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'cadastroteacher/:id',
+        component: FormTeacherComponent,
         canActivate: [AuthGuard]
       },
       {

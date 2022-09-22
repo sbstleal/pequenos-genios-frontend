@@ -31,10 +31,10 @@ export class TableTeacherComponent implements OnInit{
   constructor(private teacherService: TeacherService) {}
 
   ngOnInit() {
-    this.getStudentsInformation();
+    this.getTeacherInformation();
   }
 
-  getStudentsInformation() {
+  getTeacherInformation() {
     this.teacherService.getAllTeachers().subscribe((res: IObjetctTeacher) => {
       console.log(res);
       this.dataSource.data = res.content;

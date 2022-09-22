@@ -20,9 +20,18 @@ export class StudentService {
     );
   }
 
+  public async updateStudent(student: IStudent) {
+    await lastValueFrom(
+      this.http.put<IStudent>(`${this.api_url}/student`, student)
+    );
+  }
 
   public getAllStudents(): Observable<IObjetctStudent>{
     return this.http.get<IObjetctStudent>(`${this.api_url}/student`);
+  }
+
+  public findStudentsById(id:number): Observable<IStudent> {
+    return this.http.get<IStudent>(`${this.api_url}/student/${id}`);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 
 import { IObjetctStudent, IStudent } from '../../models/student';
 import { StudentService } from '../../services/student.service';
@@ -11,7 +12,7 @@ import { StudentService } from '../../services/student.service';
   styleUrls: ['./table-student.component.scss'],
 })
 export class TableStudentComponent implements OnInit {
-  student: IStudent[] ;
+  student: IStudent[];
 
   displayedColumns = [
     'Nome',
@@ -28,7 +29,14 @@ export class TableStudentComponent implements OnInit {
   ];
   dataSource = new MatTableDataSource<IStudent>();
 
-  constructor(private stundentService: StudentService) {}
+  constructor(private stundentService: StudentService, private activeRouter: ActivatedRoute) { }
+
+  //ngOnInit() {
+  //  this.getStudentsInformation();
+  //  const id = this.activeRouter.snapshot.paramMap.get('id');
+  //  if (id != null) { console.log("\n ************************" + id + "************************ \n") }
+
+  //}
 
   ngOnInit() {
     this.getStudentsInformation();
@@ -41,10 +49,10 @@ export class TableStudentComponent implements OnInit {
     });
   }
 
-  @ViewChild('paginator') paginator: MatPaginator;
+  @ViewChild('paginator') paginator: MatPaginator
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    this.dataSource.paginator = this.paginator
   }
 
 }

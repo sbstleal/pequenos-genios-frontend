@@ -1,5 +1,5 @@
 <div class="container" novalidate>
-  <form [formGroup]="formGroup" (ngSubmit)="postTeacher()" class="form">
+  <form [formGroup]="formGroup" class="form">
 
     <h2 class="title">Formulário de Professor</h2>
 
@@ -9,7 +9,7 @@
           <mat-form-field class="form-element">
             <input matInput placeholder="Nome" formControlName="name" [(ngModel)]="teacher.name">
             <mat-error *ngIf="!formGroup.controls['name'].valid && formGroup.controls['name'].touched">
-              {{ getNameEmail() }}
+              {{ getErrorName() }}
             </mat-error>
           </mat-form-field>
         </td>
@@ -30,7 +30,7 @@
           <mat-form-field class="form-element">
             <input matInput mask="(00) 00000-0000" placeholder="Telefone Ex: (00) 00000-0000" formControlName="phone" [(ngModel)]="teacher.phone">
             <mat-error *ngIf="!formGroup.controls['phone'].valid && formGroup.controls['phone'].touched">
-              {{ getFeeEmail() }}
+              {{ getErrorPhone() }}
             </mat-error>
           </mat-form-field>
         </td>
@@ -42,7 +42,7 @@
         <td>
           <mat-form-field class="form-element">
             <input matInput placeholder="CEP" (blur)="findCep()" mask="00000-000" formControlName="cep" [(ngModel)]="teacher.cep">
-            <mat-error *ngIf="!getCep.valid && getCep.touched">
+            <mat-error *ngIf="!Cep.valid && Cep.touched">
               {{ titleAlert }}
             </mat-error>
           </mat-form-field>
@@ -52,7 +52,7 @@
             <input matInput currencyMask placeholder="Salário Ex: 120.00" [(ngModel)]="teacher.salary"
               [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left'}" formControlName="salary">
             <mat-error *ngIf="!formGroup.controls['salary'].valid && formGroup.controls['salary'].touched">
-              {{ getFeeEmail() }}
+              {{ getErrorFee() }}
             </mat-error>
           </mat-form-field>
         </td>
@@ -129,8 +129,11 @@
     </table>
 
     <div>
-      <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Salvar
+      <button class="me-1" mat-raised-button color="primary" type="submit" (click)="saveTeacher()" class="button" [disabled]="!formGroup.valid">{{isEdit ? 'Atualizar' : 'Cadastrar'}}
       </button>
+      <button *ngIf="isEdit" mat-raised-button color="warn" class="button" (click)="delete()">Apagar
+      </button>
+
     </div>
 
   </form>

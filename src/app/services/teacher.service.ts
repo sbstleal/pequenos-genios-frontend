@@ -15,13 +15,26 @@ export class TeacherService {
 
   public async postTeacher(teacher: ITeacher) {
     await lastValueFrom(
-      this.http.post<ITeacher>(`${this.api_url}/teacher`, teacher)
+      this.http.post<ITeacher>(`${this.api_url}/teacher/${teacher.id}`, teacher)
     );
   }
 
+  public async updateTeacher(teacher: ITeacher) {
+    await lastValueFrom(
+      this.http.put<ITeacher>(`${this.api_url}/teacher${teacher.id}`, teacher)
+    );
+  }
 
   public getAllTeachers(): Observable<IObjetctTeacher> {
     return this.http.get<IObjetctTeacher>(`${this.api_url}/teacher`);
+  }
+
+  public findTeacherById(id:number): Observable<ITeacher> {
+    return this.http.get<ITeacher>(`${this.api_url}/teacher/${id}`);
+  }
+
+  public delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.api_url}/teacher/${id}`);
   }
 
 }

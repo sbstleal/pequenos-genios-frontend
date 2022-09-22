@@ -1,7 +1,10 @@
+import { async } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Cep } from 'src/app/models/cep';
 import { IStudent } from 'src/app/models/student';
 import { CepService } from 'src/app/services/cep.service';
@@ -17,13 +20,15 @@ export class FormStudentComponent implements OnInit {
 
   formGroup: FormGroup;
   titleAlert: string = 'Este campo é obrigatório';
+  id: number | null;
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient,
     private studentService: StudentService, private cepService: CepService,
-    private _snackBar: MatSnackBar) {}
+    private _snackBar: MatSnackBar, private activeRouter: ActivatedRoute) {}
 
   ngOnInit() {
     this.createForm();
+    this.fillStudentForm();
   }
 
   public student: IStudent = {} as IStudent;
@@ -90,6 +95,19 @@ export class FormStudentComponent implements OnInit {
     return this.formGroup.get('district') as FormControl;
   }
 
+  checkInUseEmail(control: { value: string }) {
+    // mimic http database access
+    let db = ['tony@gmail.com'];
+    return new Observable((observer) => {
+      setTimeout(() => {
+        let result =
+          db.indexOf(control.value) !== -1 ? { alreadyInUse: true } : null;
+        observer.next(result);
+        observer.complete();
+      }, 4000);
+    });
+  }
+
   getErrorEmail() {
     return this.formGroup.get('email')?.hasError('required')
       ? 'Este campo é obrigatório'
@@ -132,6 +150,12 @@ export class FormStudentComponent implements OnInit {
       : '';
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000
+    });
+  }
+
   public async findPostalCode(){
     this.cepApi = await this.cepService.getViaCep(this.student.cep);
     if(this.cepApi){
@@ -142,24 +166,40 @@ export class FormStudentComponent implements OnInit {
     }
   }
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 3000
-    });
-  }
-
-  public async postStudent(){
-    try{
-        await this.studentService.postStudent(this.formGroup.getRawValue());
-        console.log(this.formGroup);
-        this.formGroup.reset();
-        this.openSnackBar(this.success, this.action);
+  public async saveStudent() {
+    try {
+      if (this.student.id) {
+        await this.studentService.updateStudent(this.student)
+        this.formGroup.reset()
+        this.openSnackBar(this.success, this.action)
+        setTimeout(() => {this.activeRouter.root}, 3000);
       }
-    catch(e:any){
-      this.openSnackBar('Error', this.action);
-      console.log('error');
-      console.log(this.student);
+      else {
+        await this.studentService.postStudent(this.student)
+        this.formGroup.reset()
+        this.openSnackBar(this.success, this.action)
+      }
+    }
+    catch (e: any) {
+      console.log('error')
+      console.log(this.student)
+      this.openSnackBar('Error', this.action)
     }
   }
 
+  private fillStudentForm() {
+    const id = this.activeRouter.snapshot.paramMap.get('id')
+    if (this.activeRouter.snapshot.paramMap.get('id')) {
+      this.id = Number.parseInt(this.activeRouter.snapshot.paramMap.get('id')!);
+
+      this.studentService.findStudentsById(this.id).subscribe({
+        next: (res) => {
+          this.formGroup.patchValue(res)
+        },
+        error: (ex) => {
+          console.log(ex)
+        }
+      })
+    }
+  }
 }
