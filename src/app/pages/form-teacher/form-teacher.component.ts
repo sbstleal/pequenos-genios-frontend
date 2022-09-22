@@ -171,6 +171,7 @@ export class FormTeacherComponent implements OnInit {
         await this.teacherService.updateTeacher(this.teacher)
         this.formGroup.reset()
         this.openSnackBar(this.success, this.action)
+        setTimeout(() => {this.activeRouter.root}, 3000);
       }
       else {
         await this.teacherService.postTeacher(this.teacher)
