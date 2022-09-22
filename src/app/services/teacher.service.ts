@@ -19,6 +19,12 @@ export class TeacherService {
     );
   }
 
+  public async updateTeacher(teacher: ITeacher) {
+    await lastValueFrom(
+      this.http.put<ITeacher>(`${this.api_url}/teacher`, teacher)
+    );
+  }
+
   public getAllTeachers(): Observable<IObjetctTeacher> {
     return this.http.get<IObjetctTeacher>(`${this.api_url}/teacher`);
   }

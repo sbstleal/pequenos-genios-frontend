@@ -30,7 +30,7 @@ export class FormTeacherComponent implements OnInit {
   }
 
   public teacher: ITeacher = {} as ITeacher;
-  public cep:Cep|undefined = {} as Cep;
+  public cep: Cep | undefined = {} as Cep;
 
   success = 'Salvo com sucesso!';
   action = 'fechar';
@@ -111,42 +111,42 @@ export class FormTeacherComponent implements OnInit {
     return this.formGroup.get('email')?.hasError('required')
       ? 'Este campo é obrigatório'
       : this.formGroup.get('email')?.hasError('pattern')
-      ? 'Não é um endereço de e-mail válido'
-      : this.formGroup.get('email')?.hasError('alreadyInUse')
-      ? 'Este endereço de e-mail já está em uso'
-      : '';
+        ? 'Não é um endereço de e-mail válido'
+        : this.formGroup.get('email')?.hasError('alreadyInUse')
+          ? 'Este endereço de e-mail já está em uso'
+          : '';
   }
 
   getNameEmail() {
     return this.formGroup.get('name')?.hasError('required')
       ? 'Este campo é obrigatório'
       : this.formGroup.get('name')?.hasError('pattern')
-      ? 'Não é um nome válido'
-      : '';
+        ? 'Não é um nome válido'
+        : '';
   }
 
   getFeeEmail() {
     return this.formGroup.get('fee')?.hasError('required')
       ? 'Este campo é obrigatório'
       : this.formGroup.get('fee')?.hasError('min')
-      ? 'Mensalidade mínima de R$10.00'
-      : '';
+        ? 'Mensalidade mínima de R$10.00'
+        : '';
   }
 
   getErrorPhone() {
     return this.formGroup.get('phone')?.hasError('required')
       ? 'Este campo é obrigatório'
       : this.formGroup.get('phone')?.hasError('pattern')
-      ? 'Não é um número de telefone válido'
-      : '';
+        ? 'Não é um número de telefone válido'
+        : '';
   }
 
   getErrorNumber() {
     return this.formGroup.get('number')?.hasError('required')
       ? 'Este campo é obrigatório'
       : this.formGroup.get('number')?.hasError('pattern')
-      ? 'Não é um número de endereço válido'
-      : '';
+        ? 'Não é um número de endereço válido'
+        : '';
   }
 
 
@@ -156,36 +156,43 @@ export class FormTeacherComponent implements OnInit {
     });
   }
 
-  public async findCep(){
+  public async findCep() {
     this.cep = await this.cepService.getViaCep(this.teacher.cep);
-    if(this.cep){
+    if (this.cep) {
       this.teacher.street = this.cep.logradouro
       this.teacher.city = this.cep.localidade
       this.teacher.state = this.cep.uf
     }
   }
 
-  public async postTeacher(){
-    try{
-        await this.teacherService.postTeacher(this.teacher);
-        this.formGroup.reset();
-        this.openSnackBar(this.success, this.action);
+  public async saveTeacher() {
+    try {
+      if (this.teacher.id) {
+        await this.teacherService.updateTeacher(this.teacher)
+        this.formGroup.reset()
+        this.openSnackBar(this.success, this.action)
       }
-    catch(e:any){
-      console.log('error');
-      console.log(this.teacher);
-      this.openSnackBar('Error', this.action);
+      else {
+        await this.teacherService.postTeacher(this.teacher)
+        this.formGroup.reset()
+        this.openSnackBar(this.success, this.action)
+      }
+    }
+    catch (e: any) {
+      console.log('error')
+      console.log(this.teacher)
+      this.openSnackBar('Error', this.action)
     }
   }
 
-  private fillTeacherForm(){
+  private fillTeacherForm() {
     const id = this.activeRouter.snapshot.paramMap.get('id')
-    if (id != null) { 
+    if (id != null) {
       this.teacherService.findTeacherById(Number.parseInt(id)).subscribe({
         next: (res) => {
           this.formGroup.patchValue(res)
         },
-        error: (ex) =>{
+        error: (ex) => {
           console.log(ex)
         }
       })
