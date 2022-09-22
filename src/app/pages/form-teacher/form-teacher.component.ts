@@ -1,3 +1,4 @@
+import { async } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -25,8 +26,7 @@ export class FormTeacherComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    const id = this.activeRouter.snapshot.paramMap.get('id');
-    if (id != null) { console.log("\n ***********" + id+ "*********** \n") }
+    this.fillTeacherForm();
   }
 
   public teacher: ITeacher = {} as ITeacher;
@@ -178,6 +178,15 @@ export class FormTeacherComponent implements OnInit {
     }
   }
 
-
+  private fillTeacherForm(){
+    const id = this.activeRouter.snapshot.paramMap.get('id')
+    if (id != null) { 
+      this.teacherService.findTeacherById(Number.parseInt(id)).subscribe({
+        next: (res) => {
+          this.formGroup.patchValue(res)
+        }
+      })
+    }
+  }
 
 }

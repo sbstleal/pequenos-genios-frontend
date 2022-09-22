@@ -19,9 +19,12 @@ export class TeacherService {
     );
   }
 
-
   public getAllTeachers(): Observable<IObjetctTeacher> {
     return this.http.get<IObjetctTeacher>(`${this.api_url}/teacher`);
+  }
+
+  public findTeacherById(id:number): Observable<ITeacher> {
+    return this.http.get<ITeacher>(`${this.api_url}/teacher/${id}`);
   }
 
 }
