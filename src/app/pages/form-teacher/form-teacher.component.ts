@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Cep } from 'src/app/models/cep';
 import { ITeacher } from 'src/app/models/teacher';
@@ -20,10 +21,12 @@ export class FormTeacherComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient,
     private teacherService: TeacherService, private cepService: CepService,
-    private _snackBar: MatSnackBar) { }
+    private _snackBar: MatSnackBar, private activeRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.createForm();
+    const id = this.activeRouter.snapshot.paramMap.get('id');
+    if (id != null) { console.log("\n ***********" + id+ "*********** \n") }
   }
 
   public teacher: ITeacher = {} as ITeacher;

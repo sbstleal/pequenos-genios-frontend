@@ -42,6 +42,11 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
+        path: 'cadastroteacher/:id',
+        component: FormTeacherComponent,
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'students',
         component: TableStudentComponent,
         canActivate: [AuthGuard]
