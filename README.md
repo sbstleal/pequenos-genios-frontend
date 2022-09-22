@@ -26,7 +26,7 @@
 ![TypeScript](https://img.shields.io/badge/-TypeScript-333333?style=flat&logo=typescript)  
 ![Sass](https://img.shields.io/badge/Sass-333333?style=flat&logo=sass&logoColor=sass)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-333333?style=flat&logo=bootstrap&logoColor=Bootstrap)
-![AngularMaterial](https://img.shields.io/badge/Material--Angular-333333?style=for-the-badge&logo=material-angular&logoColor=material-angular)
+![AngularMaterial](https://img.shields.io/badge/Material--Angular-333333?style=flat&logo=material-angular&logoColor=material-angular)
   
 ---
 
