@@ -70,16 +70,12 @@ export class FormTeacherComponent implements OnInit {
     return this.formGroup.get('phone') as FormControl;
   }
 
-  get getCep() {
+  get Cep() {
     return this.formGroup.get('cep') as FormControl;
   }
 
   get street() {
     return this.formGroup.get('street') as FormControl;
-  }
-
-  get district() {
-    return this.formGroup.get('district') as FormControl;
   }
 
   get city() {
@@ -94,6 +90,11 @@ export class FormTeacherComponent implements OnInit {
     return this.formGroup.get('country') as FormControl;
   }
 
+  get district() {
+    return this.formGroup.get('district') as FormControl;
+  }
+
+  
   checkInUseEmail(control: { value: string }) {
     // mimic http database access
     let db = ['tony@gmail.com'];
@@ -162,6 +163,7 @@ export class FormTeacherComponent implements OnInit {
       this.teacher.street = this.cep.logradouro
       this.teacher.city = this.cep.localidade
       this.teacher.state = this.cep.uf
+      this.teacher.district = this.cep.bairro
     }
   }
 
@@ -199,5 +201,4 @@ export class FormTeacherComponent implements OnInit {
       })
     }
   }
-
 }
