@@ -159,6 +159,7 @@ export class FormTeacherComponent implements OnInit {
       this.teacher.street = this.cep.logradouro
       this.teacher.city = this.cep.localidade
       this.teacher.state = this.cep.uf
+      this.teacher.district = this.cep.bairro
     }
   }
 
