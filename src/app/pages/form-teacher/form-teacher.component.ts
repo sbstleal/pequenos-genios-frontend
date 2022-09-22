@@ -184,6 +184,9 @@ export class FormTeacherComponent implements OnInit {
       this.teacherService.findTeacherById(Number.parseInt(id)).subscribe({
         next: (res) => {
           this.formGroup.patchValue(res)
+        },
+        error: (ex) =>{
+          console.log(ex)
         }
       })
     }
