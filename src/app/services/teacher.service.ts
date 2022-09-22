@@ -21,7 +21,7 @@ export class TeacherService {
 
   public async updateTeacher(teacher: ITeacher) {
     await lastValueFrom(
-      this.http.put<ITeacher>(`${this.api_url}/teacher`, teacher)
+      this.http.put<ITeacher>(`${this.api_url}/teacher${teacher.id}`, teacher)
     );
   }
 
