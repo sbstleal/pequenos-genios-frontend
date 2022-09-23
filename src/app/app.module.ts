@@ -29,6 +29,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormClassComponent } from './pages/form-class/form-class.component';
 import {SearchBarComponent} from "./shared/search-bar/search-bar.component";
+import { TableClassComponent } from './pages/table-class/table-class.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import {SearchBarComponent} from "./shared/search-bar/search-bar.component";
         CarouselComponent,
         ContactComponent,
         FormClassComponent,
-        SearchBarComponent
+        SearchBarComponent,
+        TableClassComponent
     ],
     imports: [
         BrowserModule,

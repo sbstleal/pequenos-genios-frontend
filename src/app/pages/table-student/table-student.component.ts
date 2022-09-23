@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
 
 import { IObjetctStudent, IStudent } from '../../models/student';
 import { StudentService } from '../../services/student.service';
@@ -12,7 +11,7 @@ import { StudentService } from '../../services/student.service';
   styleUrls: ['./table-student.component.scss'],
 })
 export class TableStudentComponent implements OnInit {
-  student: IStudent[];
+  student: IStudent[]
 
   displayedColumns = [
     'Nome',
@@ -29,23 +28,16 @@ export class TableStudentComponent implements OnInit {
   ];
   dataSource = new MatTableDataSource<IStudent>();
 
-  constructor(private stundentService: StudentService, private activeRouter: ActivatedRoute) { }
-
-  //ngOnInit() {
-  //  this.getStudentsInformation();
-  //  const id = this.activeRouter.snapshot.paramMap.get('id');
-  //  if (id != null) { console.log("\n ************************" + id + "************************ \n") }
-
-  //}
+  constructor(private studentService: StudentService) { }
 
   ngOnInit() {
-    this.getStudentsInformation();
+    this.getStudentsInformation()
   }
 
   getStudentsInformation() {
-    this.stundentService.getAllStudents().subscribe((res: IObjetctStudent) => {
-      console.log(res);
-      this.dataSource.data = res.content;
+    this.studentService.getAllStudents().subscribe((res: IObjetctStudent) => {
+      console.log(res)
+      this.dataSource.data = res.content
     });
   }
 
