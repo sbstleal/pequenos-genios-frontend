@@ -13,6 +13,7 @@ import {HomeLayoutComponent} from "./pages/home-layout/home-layout.component";
 import { TableTeacherComponent } from './pages/table-teacher/table-teacher.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import {FormClassComponent} from "./pages/form-class/form-class.component";
+import {TableClassComponent} from "./pages/table-class/table-class.component";
 
 
 const routes: Routes = [
@@ -70,6 +71,11 @@ const routes: Routes = [
       {
         path: 'teachers',
         component: TableTeacherComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'classes',
+        component: TableClassComponent,
         canActivate: [AuthGuard]
       },
       {
