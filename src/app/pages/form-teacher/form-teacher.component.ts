@@ -178,7 +178,7 @@ export class FormTeacherComponent implements OnInit {
   public async saveTeacher() {
     try {
       if (this.isEdit) {
-        await this.teacherService.updateTeacher(this.teacher);
+        await this.teacherService.updateTeacher(this.id, this.teacher);
         this.formGroup.reset();
         this.openSnackBar(this.success, this.action);
         setTimeout(() => {
