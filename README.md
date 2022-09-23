@@ -1,4 +1,4 @@
-# 🏫 &nbsp;[PEQUENOS GÊNIOS]('https://pequenos-genios.netlify.app')
+# 🏫 &nbsp;[PEQUENOS GÊNIOS](https://pequenos-genios.netlify.app)
 
 
 
