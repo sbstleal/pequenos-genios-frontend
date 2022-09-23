@@ -1,4 +1,3 @@
-import { async } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -183,7 +182,7 @@ export class FormTeacherComponent implements OnInit {
         this.formGroup.reset();
         this.openSnackBar(this.success, this.action);
         setTimeout(() => {
-          this.activeRouter.root;
+          this.router.navigateByUrl('/main/teachers')
         }, 3000);
       } else {
         await this.teacherService.postTeacher(this.teacher);
