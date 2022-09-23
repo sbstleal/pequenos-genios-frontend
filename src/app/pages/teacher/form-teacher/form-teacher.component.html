@@ -15,7 +15,6 @@
         </td>
       </tr>
     </table>
-
     <table class="form-element" cellspacing="0">
       <tr>
         <td>
@@ -36,35 +35,12 @@
         </td>
       </tr>
     </table>
-
     <table class="form-element" cellspacing="0">
       <tr>
         <td>
           <mat-form-field class="form-element">
             <input matInput placeholder="CEP" (blur)="findCep()" mask="00000-000" formControlName="cep" [(ngModel)]="teacher.cep">
             <mat-error *ngIf="!Cep.valid && Cep.touched">
-              {{ titleAlert }}
-            </mat-error>
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="form-element">
-            <input matInput currencyMask placeholder="Salário Ex: 120.00" [(ngModel)]="teacher.salary"
-              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left'}" formControlName="salary">
-            <mat-error *ngIf="!formGroup.controls['salary'].valid && formGroup.controls['salary'].touched">
-              {{ getErrorFee() }}
-            </mat-error>
-          </mat-form-field>
-        </td>
-      </tr>
-    </table>
-
-    <table class="form-element" cellspacing="0">
-      <tr>
-        <td>
-          <mat-form-field class="form-element">
-            <input matInput placeholder="Logradouro" formControlName="street" [(ngModel)]="teacher.street">
-            <mat-error *ngIf="!street.valid && street.touched">
               {{ titleAlert }}
             </mat-error>
           </mat-form-field>
@@ -79,7 +55,26 @@
         </td>
       </tr>
     </table>
-
+    <table class="form-element" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="form-element">
+            <input matInput placeholder="Logradouro" formControlName="street" [(ngModel)]="teacher.street">
+            <mat-error *ngIf="!street.valid && street.touched">
+              {{ titleAlert }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="form-element-group">
+            <input matInput placeholder="Número" formControlName="number" [(ngModel)]="teacher.number">
+            <mat-error *ngIf="!formGroup.controls['number'].valid && formGroup.controls['number'].touched">
+              {{ getErrorNumber() }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
     <table class="form-element" cellspacing="0">
       <tr>
         <td>
@@ -100,41 +95,24 @@
         </td>
       </tr>
     </table>
-
     <table class="form-element" cellspacing="0">
       <tr>
         <td>
-          <mat-form-field class="form-element-group">
-            <mat-label>País</mat-label>
-            <mat-select matInput formControlName="country" [(ngModel)]="teacher.country">
-              <mat-option *ngFor="let country of countrySelected" [value]="country.value">
-                {{country.viewValue}}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="!country.valid && country.touched">
-              {{ titleAlert }}
-            </mat-error>
-          </mat-form-field>
-        </td>
-
-        <td>
-          <mat-form-field class="form-element-group">
-            <input matInput placeholder="Número" formControlName="number" [(ngModel)]="teacher.number">
-            <mat-error *ngIf="!formGroup.controls['number'].valid && formGroup.controls['number'].touched">
-              {{ getErrorNumber() }}
+          <mat-form-field class="form-element">
+            <input matInput currencyMask placeholder="Salário Ex: 120.00" [(ngModel)]="teacher.salary"
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left'}" formControlName="salary">
+            <mat-error *ngIf="!formGroup.controls['salary'].valid && formGroup.controls['salary'].touched">
+              {{ getErrorFee() }}
             </mat-error>
           </mat-form-field>
         </td>
       </tr>
     </table>
-
     <div>
       <button class="me-1" mat-raised-button color="primary" type="submit" (click)="saveTeacher()" class="button" [disabled]="!formGroup.valid">{{isEdit ? 'Atualizar' : 'Cadastrar'}}
       </button>
       <button *ngIf="isEdit" mat-raised-button color="warn" class="button" (click)="delete()">Apagar
       </button>
-
     </div>
-
   </form>
 </div>

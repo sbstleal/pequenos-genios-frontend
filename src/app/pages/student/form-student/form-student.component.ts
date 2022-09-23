@@ -39,12 +39,7 @@ export class FormStudentComponent implements OnInit {
   success = 'Salvo com sucesso!';
   action = 'fechar';
 
-  countrySelected = [
-    {
-      value: 'Brasil',
-      viewValue: 'Brasil'
-    },
-  ];
+
 
   createForm() {
     let emailRegex: RegExp =
@@ -63,7 +58,7 @@ export class FormStudentComponent implements OnInit {
       street: [null, Validators.required],
       state: [null, Validators.required],
       city: [null, Validators.required],
-      country: [null, Validators.required],
+      country: (this.student.country = 'Brasil'),
       number: [null, [Validators.required, Validators.pattern(numberRegex)]],
       district: [null, [Validators.required, Validators.pattern(nameRegex)]]
     });

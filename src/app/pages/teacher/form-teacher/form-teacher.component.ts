@@ -46,13 +46,6 @@ export class FormTeacherComponent implements OnInit {
   success = 'Salvo com sucesso!';
   action = 'fechar';
 
-  countrySelected = [
-    {
-      value: 'Brasil',
-      viewValue: 'Brasil',
-    },
-  ];
-
   createForm() {
     let emailregex: RegExp =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -71,7 +64,7 @@ export class FormTeacherComponent implements OnInit {
       district: [null, Validators.required],
       state: [null, Validators.required],
       city: [null, Validators.required],
-      country: [null, Validators.required],
+      country: (this.teacher.country = 'Brasil'),
       number: [null, [Validators.required, Validators.pattern(numberRegex)]],
     });
   }

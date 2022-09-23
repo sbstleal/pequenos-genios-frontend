@@ -15,7 +15,7 @@
   </mat-form-field>
 
   <div *ngIf="teacherSelected" class="d-flex">
-    <p class="pe-1"> professor Selecionado: </p>
+    <p class="pe-1"> Professor Selecionado: </p>
     <p class="teacherName" (click)="removeTeacher()">{{ teacherSelected.name }}</p>
   </div>
   <search-bar *ngIf="!teacherSelected" [model]="modelTeacher" (onSelect)="teacherChanged($event)"  ></search-bar>
