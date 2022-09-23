@@ -13,16 +13,15 @@ export class StudentService {
 
   api_url = environment.backend;
 
-
   public async postStudent(student: IStudent) {
     await lastValueFrom(
       this.http.post<IStudent>(`${this.api_url}/student`, student)
     );
   }
 
-  public async updateStudent(student: IStudent) {
+  public async updateStudent(id:number, student: IStudent) {
     await lastValueFrom(
-      this.http.put<IStudent>(`${this.api_url}/student`, student)
+      this.http.put<IStudent>(`${this.api_url}/teacher/${id}`, student)
     );
   }
 
