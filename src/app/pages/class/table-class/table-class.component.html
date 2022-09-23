@@ -1,7 +1,9 @@
 <div class="w-100">
+  <h1 class="title">LISTA DE CLASSES</h1>
   <table mat-table
         [dataSource]="classDataSource" multiTemplateDataRows
         class="mat-elevation-z8 w-100">
+
 
     <ng-container matColumnDef="Professor">
       <mat-header-cell *matHeaderCellDef> Professor </mat-header-cell>
@@ -74,10 +76,10 @@
   </table>
   <div class="w-100">
     <mat-paginator #paginator
-                   (page)="setPage($event)"
-                   [pageSizeOptions]="[10, 50, 100]"
-                   [pageSize]="10"
-                   showFirstLastButtons
+                  (page)="setPage($event)"
+                  [pageSizeOptions]="[10, 50, 100]"
+                  [pageSize]="10"
+                  showFirstLastButtons
     ></mat-paginator>
   </div>
 </div>

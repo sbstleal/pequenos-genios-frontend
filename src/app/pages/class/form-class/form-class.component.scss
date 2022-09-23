@@ -12,12 +12,6 @@
   background-color: #b91c13b7;
 }
 
-.button {
-  position: relative;
-  width: 30%;
-  margin-top: 15px;
-  position: relative;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-
+.mat-raised-button.mat-primary{
+  margin-top: 20px;
 }
