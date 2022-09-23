@@ -2,6 +2,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {IClass} from "../models/classes";
+import {Page} from "../models/page.model";
 
 export class ClassService {
   constructor(private http: HttpClient) { }
@@ -22,4 +23,7 @@ export class ClassService {
     return this.http.delete<void>(`${environment.backend}/class/${id}`)
   }
 
+  findAll(): Observable<Page<IClass>> {
+    return this.http.get<Page<IClass>>(`${environment.backend}/class`)
+  }
 }
