@@ -34,7 +34,7 @@ export class StudentService {
   }
 
   public delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.api_url}/teacher/${id}`);
+    return this.http.delete<void>(`${this.api_url}/student/${id}`);
   }
 
 }
