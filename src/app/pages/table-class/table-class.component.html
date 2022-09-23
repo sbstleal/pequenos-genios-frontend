@@ -1,7 +1,7 @@
 <div class="w-100">
   <table mat-table
-         [dataSource]="classDataSource" multiTemplateDataRows
-         class="mat-elevation-z8 w-100">
+        [dataSource]="classDataSource" multiTemplateDataRows
+        class="mat-elevation-z8 w-100">
 
     <ng-container matColumnDef="Professor">
       <mat-header-cell *matHeaderCellDef> Professor </mat-header-cell>
@@ -22,16 +22,16 @@
     <ng-container matColumnDef="expandedDetail">
       <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
         <div class="example-element-detail"
-             [@detailExpand]="element == expandedElement ? 'expanded1' : 'collapsed'">
+            [@detailExpand]="element == expandedElement ? 'expanded1' : 'collapsed'">
           <div class="d-flex flex-column justify-content-center w-100" style="border: solid black 2px">
             <div class="w-50 p-1">
               <mat-spinner *ngIf="isLoadingRow" class=""></mat-spinner>
               <h3 class="text-center">Estudantes nessa turma</h3>
               <table mat-table
                      *ngIf="!isLoadingRow"
-                     [dataSource]="studentDataSource"
-                     multiTemplateDataRows
-                     class="w-100" style="height: 20vh; border: solid blue 2px;"
+                    [dataSource]="studentDataSource"
+                    multiTemplateDataRows
+                    class="w-100" style="height: 20vh; border: solid blue 2px;"
               >
 
                 <ng-container matColumnDef="name">
