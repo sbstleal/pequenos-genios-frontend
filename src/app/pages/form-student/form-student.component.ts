@@ -174,9 +174,6 @@ export class FormStudentComponent implements OnInit {
         await this.studentService.updateStudent(this.id, this.student);
         this.formGroup.reset();
         this.openSnackBar(this.success, this.action);
-        setTimeout(() => {
-          this.router.navigateByUrl('/main/students')
-        }, 4000);
       } else {
         await this.studentService.postStudent(this.student);
         this.formGroup.reset();
@@ -187,6 +184,9 @@ export class FormStudentComponent implements OnInit {
       console.log(this.student);
       this.openSnackBar('Error', this.action);
     }
+    setTimeout(() => {
+      this.router.navigateByUrl('/main/students')
+    }, 4000);
   }
 
   private fillStudentForm() {
