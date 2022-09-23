@@ -107,6 +107,8 @@ export class SearchBarComponent implements ControlValueAccessor, OnInit {
 
   optionSelect(element: any): void {
     this.onSelect.emit(element);
+    this._valueSelected = null;
+    this.form.get('name')?.setValue('')
   }
 
   valueFromInput(): string {
@@ -148,7 +150,4 @@ export class SearchBarComponent implements ControlValueAccessor, OnInit {
     return this._valueSelected != null;
   }
 
-  keyBackspacePressed(event: any) {
-    this.dropSelectedValue();
-  }
 }
