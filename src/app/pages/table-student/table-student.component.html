@@ -58,9 +58,9 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="'/main/cadastrostudent'+ row.id"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="'/main/cadastrostudent/'+ row.id"></mat-row>
   </mat-table>
 
-  <mat-paginator #paginator [pageSize]="8" [pageSizeOptions]="[5, 8, 16]">
+  <mat-paginator #paginator [pageSize]="8" [pageSizeOptions]="[5, 8, 20]">
   </mat-paginator>
 </div>
