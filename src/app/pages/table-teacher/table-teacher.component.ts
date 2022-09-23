@@ -1,17 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { TeacherService } from 'src/app/services/teacher.service';
 
 import { IObjetctTeacher, ITeacher } from '../../models/teacher';
+import { TeacherService } from 'src/app/services/teacher.service';
 
 @Component({
   selector: 'app-table-teacher',
   templateUrl: './table-teacher.component.html',
   styleUrls: ['./table-teacher.component.scss']
 })
-export class TableTeacherComponent implements OnInit{
-  teacher: ITeacher[] ;
+export class TableTeacherComponent implements OnInit {
+  teacher: ITeacher[]
 
   displayedColumns = [
     'Nome',
@@ -31,20 +31,20 @@ export class TableTeacherComponent implements OnInit{
   constructor(private teacherService: TeacherService) {}
 
   ngOnInit() {
-    this.getTeacherInformation();
+    this.getTeacherInformation()
   }
 
   getTeacherInformation() {
     this.teacherService.getAllTeachers().subscribe((res: IObjetctTeacher) => {
-      console.log(res);
-      this.dataSource.data = res.content;
+      console.log(res)
+      this.dataSource.data = res.content
     });
   }
 
-  @ViewChild('paginator') paginator: MatPaginator;
+  @ViewChild('paginator') paginator: MatPaginator
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    this.dataSource.paginator = this.paginator
   }
 
 }

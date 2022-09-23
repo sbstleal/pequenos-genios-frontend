@@ -181,9 +181,6 @@ export class FormTeacherComponent implements OnInit {
         await this.teacherService.updateTeacher(this.id, this.teacher);
         this.formGroup.reset();
         this.openSnackBar(this.success, this.action);
-        setTimeout(() => {
-          this.router.navigateByUrl('/main/teachers')
-        }, 3000);
       } else {
         await this.teacherService.postTeacher(this.teacher);
         this.formGroup.reset();
@@ -194,6 +191,9 @@ export class FormTeacherComponent implements OnInit {
       console.log(this.teacher);
       this.openSnackBar('Error', this.action);
     }
+    setTimeout(() => {
+      this.router.navigate(['/main/teachers'])
+    }, 4000);
   }
 
   private fillTeacherForm() {
