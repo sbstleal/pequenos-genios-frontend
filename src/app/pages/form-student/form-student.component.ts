@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Cep } from 'src/app/models/cep';
 import { IStudent } from 'src/app/models/student';
@@ -20,13 +20,15 @@ export class FormStudentComponent implements OnInit {
 
   formGroup: FormGroup;
   titleAlert: string = 'Este campo é obrigatório';
-  id: number | null;
+  isEdit: boolean = false;
+  id: number;
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient,
     private studentService: StudentService, private cepService: CepService,
-    private _snackBar: MatSnackBar, private activeRouter: ActivatedRoute) {}
+    private _snackBar: MatSnackBar, private activeRouter: ActivatedRoute,
+    private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.createForm();
     this.fillStudentForm();
   }
@@ -168,38 +170,54 @@ export class FormStudentComponent implements OnInit {
 
   public async saveStudent() {
     try {
-      if (this.student.id) {
-        await this.studentService.updateStudent(this.student)
-        this.formGroup.reset()
-        this.openSnackBar(this.success, this.action)
-        setTimeout(() => {this.activeRouter.root}, 3000);
+      if (this.isEdit) {
+        await this.studentService.updateStudent(this.id, this.student);
+        this.formGroup.reset();
+        this.openSnackBar(this.success, this.action);
+        setTimeout(() => {
+          this.router.navigateByUrl('/main/students')
+        }, 4000);
+      } else {
+        await this.studentService.postStudent(this.student);
+        this.formGroup.reset();
+        this.openSnackBar(this.success, this.action);
       }
-      else {
-        await this.studentService.postStudent(this.student)
-        this.formGroup.reset()
-        this.openSnackBar(this.success, this.action)
-      }
-    }
-    catch (e: any) {
-      console.log('error')
-      console.log(this.student)
-      this.openSnackBar('Error', this.action)
+    } catch (e: any) {
+      console.log('error');
+      console.log(this.student);
+      this.openSnackBar('Error', this.action);
     }
   }
 
   private fillStudentForm() {
-    const id = this.activeRouter.snapshot.paramMap.get('id')
     if (this.activeRouter.snapshot.paramMap.get('id')) {
+      this.isEdit = true;
       this.id = Number.parseInt(this.activeRouter.snapshot.paramMap.get('id')!);
-
       this.studentService.findStudentsById(this.id).subscribe({
         next: (res) => {
-          this.formGroup.patchValue(res)
+          this.formGroup.patchValue(res);
         },
         error: (ex) => {
-          console.log(ex)
+          console.log(ex);
+        },
+      });
+    }
+  }
+
+  delete() {
+    if (confirm('Você está prestes a apagar esse registro, esta ação não pode ser desfeita!'))
+     {
+      this.studentService.delete(this.id).subscribe({
+        next: (n) => {
+          this.openSnackBar('Registro apagado com sucesso', 'fechar');
+          this.router.navigateByUrl('/main/students');
+        },
+        error: (e) => {
+          alert('erro aconteceu: ' + e)
         }
-      })
+      });
+    } else {
+      alert('cancelado!')
     }
   }
 }

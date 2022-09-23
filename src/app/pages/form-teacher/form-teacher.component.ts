@@ -183,7 +183,7 @@ export class FormTeacherComponent implements OnInit {
         this.openSnackBar(this.success, this.action);
         setTimeout(() => {
           this.router.navigateByUrl('/main/teachers')
-        }, 3000);
+        }, 4000);
       } else {
         await this.teacherService.postTeacher(this.teacher);
         this.formGroup.reset();
