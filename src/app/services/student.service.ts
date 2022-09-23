@@ -34,4 +34,8 @@ export class StudentService {
     return this.http.get<IStudent>(`${this.api_url}/student/${id}`);
   }
 
+  public delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.api_url}/student/${id}`);
+  }
+
 }
