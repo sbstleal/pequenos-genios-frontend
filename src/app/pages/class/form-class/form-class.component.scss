@@ -1,0 +1,23 @@
+
+.container {
+  padding: 20px;
+  text-align: center;
+}
+
+.teacherName:hover{
+  color: #b91c13b7;
+}
+
+.table-row:hover{
+  background-color: #b91c13b7;
+}
+
+.button {
+  position: relative;
+  width: 30%;
+  margin-top: 15px;
+  position: relative;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+}

@@ -1,3 +1,4 @@
+<div class="container" novalidate>
 <form action="submit" class="p-5">
   <mat-form-field class="w-100">
     <mat-label>Turma</mat-label>
@@ -23,7 +24,7 @@
   <mat-table #table [dataSource]="dataSource">
 
     <ng-container matColumnDef="Nome">
-      <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef required> Nome </mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
     </ng-container>
 
@@ -42,7 +43,8 @@
     <mat-row (click)="removeItem(row)" class="table-row" *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 
-  <button class="w-100 mt-4" color="primary" mat-raised-button (click)="submit()">{{isEdit ? 'Atualizar': 'Cadastrar'}}</button>
-  <button class="w-100 mt-2" *ngIf="isEdit" mat-raised-button color="warn" (click)="delete()">Apagar</button>
+  <button  color="primary" mat-raised-button (click)="submit()">{{isEdit ? 'Atualizar': 'Cadastrar'}}</button>
+  <button *ngIf="isEdit" mat-raised-button color="warn" (click)="delete()">Apagar</button>
 
 </form>
+</div>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {IClass} from "../../models/classes";
+import {IClass} from "../../../models/classes";
 import {MatTableDataSource} from "@angular/material/table";
-import {IStudent} from "../../models/student";
-import {ClassService} from "../../services/class.service";
+import {IStudent} from "../../../models/student";
+import {ClassService} from "../../../services/class.service";
 import {HttpClient} from "@angular/common/http";
 import {PageEvent} from "@angular/material/paginator";
 import {animate, state, style, transition, trigger} from '@angular/animations';

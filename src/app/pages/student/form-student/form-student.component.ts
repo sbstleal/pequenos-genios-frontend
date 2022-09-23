@@ -106,7 +106,7 @@ export class FormStudentComponent implements OnInit {
           db.indexOf(control.value) !== -1 ? { alreadyInUse: true } : null;
         observer.next(result);
         observer.complete();
-      }, 4000);
+      }, 3000);
     });
   }
 
@@ -186,7 +186,7 @@ export class FormStudentComponent implements OnInit {
     }
     setTimeout(() => {
       this.router.navigateByUrl('/main/students')
-    }, 4000);
+    }, 3000);
   }
 
   private fillStudentForm() {

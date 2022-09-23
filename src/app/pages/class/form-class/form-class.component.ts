@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {IStudent} from "../../models/student";
+import {IStudent} from "../../../models/student";
 import {MatTableDataSource} from "@angular/material/table";
-import {ModelSelectEnum} from "../../models/model.select.enum";
-import {ITeacher} from "../../models/teacher";
+import {ModelSelectEnum} from "../../../models/model.select.enum";
+import {ITeacher} from "../../../models/teacher";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {ClassService} from "../../services/class.service";
-import {IClass} from "../../models/classes";
+import {ClassService} from "../../../services/class.service";
+import {IClass} from "../../../models/classes";
 
 @Component({
   selector: 'app-form-class',
@@ -77,7 +77,7 @@ export class FormClassComponent implements OnInit {
           this.teacherSelected = null;
           this.dataSource.data = [];
           if(!confirm('gostaria de cadastrar outro?')) {
-            this.router.navigateByUrl('main')
+            this.router.navigateByUrl('main/classes')
           }
         },
         error: (e) => {

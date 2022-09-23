@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { IObjetctStudent, IStudent } from '../../models/student';
-import { StudentService } from '../../services/student.service';
+import { IObjetctStudent, IStudent } from '../../../models/student';
+import { StudentService } from '../../../services/student.service';
 
 @Component({
   selector: 'app-table-student',
