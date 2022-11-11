@@ -3,8 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+<<<<<<< Updated upstream:src/app/pages/student/form-student/form-student.component.ts
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+=======
+import { ActivatedRoute } from '@angular/router';
+>>>>>>> Stashed changes:src/app/pages/form-student/form-student.component.ts
 import { Cep } from 'src/app/models/cep';
 import { IStudent } from 'src/app/models/student';
 import { CepService } from 'src/app/services/cep.service';
@@ -25,8 +29,12 @@ export class FormStudentComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient,
     private studentService: StudentService, private cepService: CepService,
+<<<<<<< Updated upstream:src/app/pages/student/form-student/form-student.component.ts
     private _snackBar: MatSnackBar, private activeRouter: ActivatedRoute,
     private router: Router) {}
+=======
+    private _snackBar: MatSnackBar, private activeRouter: ActivatedRoute) { }
+>>>>>>> Stashed changes:src/app/pages/form-student/form-student.component.ts
 
   ngOnInit(): void {
     this.createForm();
@@ -163,6 +171,7 @@ export class FormStudentComponent implements OnInit {
     }
   }
 
+<<<<<<< Updated upstream:src/app/pages/student/form-student/form-student.component.ts
   public async saveStudent() {
     try {
       if (this.isEdit) {
@@ -196,6 +205,46 @@ export class FormStudentComponent implements OnInit {
           console.log(ex);
         },
       });
+=======
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000
+    });
+  }
+
+  public async saveStudent() {
+    try {
+      if (this.student.id) {
+        await this.studentService.updateStudent(this.student)
+        this.formGroup.reset()
+        this.openSnackBar(this.success, this.action)
+        setTimeout(() => {this.activeRouter.root}, 3000);
+      }
+      else {
+        await this.studentService.postStudent(this.student)
+        this.formGroup.reset()
+        this.openSnackBar(this.success, this.action)
+      }
+    }
+    catch (e: any) {
+      console.log('error')
+      console.log(this.student)
+      this.openSnackBar('Error', this.action)
+    }
+  }
+
+  private fillTeacherForm() {
+    const id = this.activeRouter.snapshot.paramMap.get('id')
+    if (id != null) {
+      this.studentService.findStudentsById(Number.parseInt(id)).subscribe({
+        next: (res) => {
+          this.formGroup.patchValue(res)
+        },
+        error: (ex) => {
+          console.log(ex)
+        }
+      })
+>>>>>>> Stashed changes:src/app/pages/form-student/form-student.component.ts
     }
   }
 

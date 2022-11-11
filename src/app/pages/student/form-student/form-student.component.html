@@ -1,5 +1,9 @@
 <div class="container" novalidate>
+<<<<<<< Updated upstream:src/app/pages/student/form-student/form-student.component.html
   <form [formGroup]="formGroup" class="form">
+=======
+  <form [formGroup]="formGroup" (ngSubmit)="saveStudent()" class="form">
+>>>>>>> Stashed changes:src/app/pages/form-student/form-student.component.html
 
     <h2 class="title">Formulário de Estudante</h2>
 
@@ -19,7 +23,11 @@
       <tr>
         <td>
           <mat-form-field class="form-element">
+<<<<<<< Updated upstream:src/app/pages/student/form-student/form-student.component.html
             <input matInput placeholder="E-mail Ex: estudante@pequenosgenios.com" formControlName="email"[(ngModel)]="student.email">
+=======
+            <input matInput placeholder="E-mail Ex: estudante@pequenosgenios.com" formControlName="email" [(ngModel)]="student.email">
+>>>>>>> Stashed changes:src/app/pages/form-student/form-student.component.html
             <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
               {{ getErrorEmail() }}
             </mat-error>
@@ -27,7 +35,11 @@
         </td>
         <td>
           <mat-form-field class="form-element">
+<<<<<<< Updated upstream:src/app/pages/student/form-student/form-student.component.html
             <input matInput mask="(00) 00000-0000" placeholder="Telefone Ex: (00) 00000-0000" formControlName="phone"[(ngModel)]="student.phone">
+=======
+            <input matInput mask="(00) 00000-0000" placeholder="Telefone Ex: (00) 00000-0000" formControlName="phone" [(ngModel)]="student.phone">
+>>>>>>> Stashed changes:src/app/pages/form-student/form-student.component.html
             <mat-error *ngIf="!formGroup.controls['phone'].valid && formGroup.controls['phone'].touched">
               {{ getErrorPhone() }}
             </mat-error>
