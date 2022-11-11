@@ -28,11 +28,7 @@ export class TableStudentComponent implements OnInit {
   ];
   dataSource = new MatTableDataSource<IStudent>();
 
-<<<<<<< Updated upstream:src/app/pages/student/table-student/table-student.component.ts
   constructor(private studentService: StudentService) { }
-=======
-  constructor(private stundentService: StudentService) { }
->>>>>>> Stashed changes:src/app/pages/table-student/table-student.component.ts
 
   ngOnInit() {
     this.getStudentsInformation()
