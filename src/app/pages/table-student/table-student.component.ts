@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 
-import { IObjetctStudent, IStudent } from '../../../models/student';
-import { StudentService } from '../../../services/student.service';
+import { IObjetctStudent, IStudent } from '../../models/student';
+import { StudentService } from '../../services/student.service';
 
 @Component({
   selector: 'app-table-student',
@@ -11,7 +12,7 @@ import { StudentService } from '../../../services/student.service';
   styleUrls: ['./table-student.component.scss'],
 })
 export class TableStudentComponent implements OnInit {
-  student: IStudent[]
+  student: IStudent[];
 
   displayedColumns = [
     'Nome',
@@ -28,20 +29,19 @@ export class TableStudentComponent implements OnInit {
   ];
   dataSource = new MatTableDataSource<IStudent>();
 
-<<<<<<< Updated upstream:src/app/pages/student/table-student/table-student.component.ts
-  constructor(private studentService: StudentService) { }
-=======
-  constructor(private stundentService: StudentService) { }
->>>>>>> Stashed changes:src/app/pages/table-student/table-student.component.ts
+  constructor(private stundentService: StudentService, private activeRouter: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getStudentsInformation()
+    this.getStudentsInformation();
+    const id = this.activeRouter.snapshot.paramMap.get('id');
+    if (id != null) { console.log("\n ************************" + id + "************************ \n") }
+
   }
 
   getStudentsInformation() {
-    this.studentService.getAllStudents().subscribe((res: IObjetctStudent) => {
-      console.log(res)
-      this.dataSource.data = res.content
+    this.stundentService.getAllStudents().subscribe((res: IObjetctStudent) => {
+      console.log(res);
+      this.dataSource.data = res.content;
     });
   }
 
